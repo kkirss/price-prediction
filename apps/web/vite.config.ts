@@ -17,5 +17,14 @@ export default defineConfig({
   },
   build: {
     target: 'esnext'
+  },
+  test: {
+    deps: {
+      // This is to avoid solid-js being loaded twice.
+      // See https://github.com/solidjs/solid-testing-library#known-issues
+      inline: [/solid-js/]
+    },
+    environment: 'jsdom',
+    setupFiles: ['setupVitest.ts']
   }
 })

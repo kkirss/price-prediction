@@ -38,6 +38,16 @@ pnpm run dev
 pnpm run lint
 ```
 
+### Test
+
+```bash
+pnpm run test
+```
+Or to run tests in watch mode:
+```bash
+pnpm run test:watch
+```
+
 ### Preview Production Build Locally
 
 ```bash

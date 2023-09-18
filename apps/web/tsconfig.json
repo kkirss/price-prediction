@@ -1,13 +1,24 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "tsconfig/solid-js.json",
-  "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", "dist/**"],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "setupVitest.ts",
+    "vite.config.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist/**"
+  ],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
       "~/*": ["src/*"]
     },
-    "types": ["vite/client"]
+    "types": [
+      "vite/client",
+      "vitest"
+    ]
   }
 }

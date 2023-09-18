@@ -11,6 +11,11 @@
       "persistent": true
     },
     "lint": {},
+    "test": {},
+    "test:watch": {
+      "cache": false,
+      "persistent": true
+    },
     "serve": {
       "dependsOn": ["build"]
     }
