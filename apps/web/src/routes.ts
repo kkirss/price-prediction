@@ -1,10 +1,9 @@
 import type { RouteDefinition } from '@solidjs/router'
-
-import Home from './pages/home/Home'
+import { lazy } from 'solid-js'
 
 export const routes: RouteDefinition[] = [
   {
     path: '/',
-    component: Home
+    component: lazy(async () => await import('./pages/home/Home'))
   }
 ]
