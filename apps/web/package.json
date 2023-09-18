@@ -7,6 +7,7 @@
     "dev": "vite",
     "lint": "ts-standard",
     "lint:fix": "ts-standard --fix",
+    "check-types": "tsc --pretty",
     "test": "vitest run",
     "test:watch": "vitest",
     "serve": "vite preview"

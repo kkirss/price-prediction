@@ -43,6 +43,12 @@ Or to automatically fix issues, if possible:
 pnpm run lint:fix
 ```
 
+### Check Types
+
+```bash
+pnpm run check-types
+```
+
 ### Test
 
 ```bash

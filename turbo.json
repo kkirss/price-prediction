@@ -12,6 +12,9 @@
     },
     "lint": {},
     "lint:fix": {},
+    "check-types": {
+      "outputs": ["tsconfig.tsbuildinfo"]
+    },
     "test": {},
     "test:watch": {
       "cache": false,
