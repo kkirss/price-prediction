@@ -5,7 +5,8 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite",
-    "lint": "ts-standard --fix",
+    "lint": "ts-standard",
+    "lint:fix": "ts-standard --fix",
     "test": "vitest run",
     "test:watch": "vitest",
     "serve": "vite preview"

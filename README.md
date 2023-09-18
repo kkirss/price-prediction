@@ -38,11 +38,17 @@ pnpm run dev
 pnpm run lint
 ```
 
+Or to automatically fix issues, if possible:
+```bash
+pnpm run lint:fix
+```
+
 ### Test
 
 ```bash
 pnpm run test
 ```
+
 Or to run tests in watch mode:
 ```bash
 pnpm run test:watch
