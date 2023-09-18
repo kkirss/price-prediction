@@ -3,6 +3,16 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 import solidPlugin from 'vite-plugin-solid'
 import suidPlugin from '@suid/vite-plugin'
 
+import { dependencies } from './package.json'
+
+// Source: https://sambitsahoo.com/blog/vite-code-splitting-that-works.html
+const renderChunks = (deps: Record<string, string>): Record<string, string[]> =>
+  Object.fromEntries(
+    Object.keys(deps).map(
+      (key) => [key, [key]]
+    )
+  )
+
 export default defineConfig({
   plugins: [
     tsconfigPaths(),
@@ -16,7 +26,14 @@ export default defineConfig({
     port: 3001
   },
   build: {
-    target: 'esnext'
+    target: 'esnext',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          ...renderChunks(dependencies)
+        }
+      }
+    }
   },
   test: {
     deps: {
