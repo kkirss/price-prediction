@@ -10,14 +10,17 @@
   },
   "dependencies": {
     "solid-js": "^1.7.11",
-    "@solidjs/router": "^0.8.3"
+    "@solidjs/router": "^0.8.3",
+    "@suid/material": "^0.14.2"
   },
   "devDependencies": {
+    "@suid/vite-plugin": "^0.1.4",
     "tsconfig": "workspace:*",
     "ts-standard": "^12.0.2",
     "typescript": "^5.2.2",
     "vite": "^4.4.9",
-    "vite-plugin-solid": "^2.7.0"
+    "vite-plugin-solid": "^2.7.0",
+    "vite-tsconfig-paths": "^4.2.1"
   },
   "ts-standard": {
     "ignore": ["dist"]
