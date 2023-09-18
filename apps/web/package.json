@@ -1,0 +1,25 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "lint": "ts-standard --fix",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "solid-js": "^1.7.11",
+    "@solidjs/router": "^0.8.3"
+  },
+  "devDependencies": {
+    "tsconfig": "workspace:*",
+    "ts-standard": "^12.0.2",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.9",
+    "vite-plugin-solid": "^2.7.0"
+  },
+  "ts-standard": {
+    "ignore": ["dist"]
+  }
+}

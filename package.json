@@ -1,0 +1,15 @@
+{
+  "name": "price-prediction",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "serve": "turbo run serve"
+  },
+  "devDependencies": {
+    "tsconfig": "workspace:*",
+    "turbo": "latest"
+  },
+  "packageManager": "pnpm@8.6.10"
+}
