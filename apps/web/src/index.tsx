@@ -1,7 +1,8 @@
 /* @refresh reload */
 import { render } from 'solid-js/web'
-import { Router } from '@solidjs/router'
+
 import App from './App'
+import AppContext from './AppContext'
 
 const root = document.getElementById('root')
 
@@ -13,9 +14,9 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
 
 render(
   () => (
-    <Router base={import.meta.env.BASE_URL}>
+    <AppContext>
       <App />
-    </Router>
+    </AppContext>
   ),
   root! // eslint-disable-line @typescript-eslint/no-non-null-assertion
 )

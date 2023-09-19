@@ -1,6 +1,6 @@
 import type { Component } from 'solid-js'
 import { useRoutes } from '@solidjs/router'
-import { Container, CssBaseline } from '@suid/material'
+import { Container } from '@suid/material'
 
 import NavigationBar from './navbar/NavigationBar'
 import { routes } from './routes'
@@ -10,7 +10,6 @@ const App: Component = () => {
 
   return (
     <>
-      <CssBaseline />
       <NavigationBar />
       <Container>
         <Route />
