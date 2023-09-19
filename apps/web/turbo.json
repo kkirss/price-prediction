@@ -3,6 +3,16 @@
   "pipeline": {
     "build": {
       "outputs": ["dist/**"]
+    },
+    "build:gh-pages": {
+      "outputs": ["dist/**"]
+    },
+    "deploy:gh-pages": {
+      "dependsOn": ["build:gh-pages"],
+      "inputs": ["dist/**"]
+    },
+    "deploy:web": {
+      "dependsOn": ["deploy:gh-pages"]
     }
   }
 }

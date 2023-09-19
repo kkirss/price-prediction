@@ -2,6 +2,8 @@
 
 Toy app to predict prices of Bitcoin.
 
+https://kkirss.github.io/price-prediction/
+
 ## Technology
 
 * [TypeScript](https://www.typescriptlang.org/) _(language)_
@@ -67,6 +69,13 @@ pnpm run serve
 ```
 
 ## Deploy
+
+### Frontend
+
+To deploy the web frontend to GitHub Pages:
+```bash
+pnpm run deploy:web
+```
 
 ### Build
 

@@ -9,7 +9,8 @@
     "check-types": "turbo run check-types",
     "test": "turbo run test",
     "test:watch": "turbo run test:watch",
-    "serve": "turbo run serve"
+    "serve": "turbo run serve",
+    "deploy:web": "turbo run --filter web deploy:web"
   },
   "devDependencies": {
     "tsconfig": "workspace:*",

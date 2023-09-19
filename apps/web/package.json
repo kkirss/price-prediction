@@ -10,7 +10,9 @@
     "check-types": "tsc --pretty",
     "test": "vitest run",
     "test:watch": "vitest",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "build:gh-pages": "vite build --base /price-prediction/",
+    "deploy:gh-pages": "gh-pages --dist dist --dotfiles"
   },
   "dependencies": {
     "solid-js": "^1.7.11",
@@ -21,6 +23,7 @@
     "@solidjs/testing-library": "^0.8.4",
     "@suid/vite-plugin": "^0.1.4",
     "@testing-library/jest-dom": "^6.1.3",
+    "gh-pages": "^3.2.3",
     "jsdom": "^22.1.0",
     "tsconfig": "workspace:*",
     "ts-standard": "^12.0.2",
