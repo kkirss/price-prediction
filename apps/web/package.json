@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "@price-prediction/web",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -20,12 +20,12 @@
     "@suid/material": "^0.14.2"
   },
   "devDependencies": {
+    "@price-prediction/tsconfig": "workspace:*",
     "@solidjs/testing-library": "^0.8.4",
     "@suid/vite-plugin": "^0.1.4",
     "@testing-library/jest-dom": "^6.1.3",
     "gh-pages": "^3.2.3",
     "jsdom": "^22.1.0",
-    "tsconfig": "workspace:*",
     "ts-standard": "^12.0.2",
     "typescript": "^5.2.2",
     "vite": "^4.4.9",

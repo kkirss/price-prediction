@@ -13,7 +13,7 @@
     "deploy:web": "turbo run --filter web deploy:web"
   },
   "devDependencies": {
-    "tsconfig": "workspace:*",
+    "@price-prediction/tsconfig": "workspace:*",
     "turbo": "latest"
   },
   "packageManager": "pnpm@8.6.10"

@@ -1,8 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": [
-    "tsconfig/base.json",
-    "tsconfig/solid-js.json",
+    "@price-prediction/tsconfig/base.json",
+    "@price-prediction/tsconfig/solid-js.json",
   ],
   "include": [
     "**/*.ts",

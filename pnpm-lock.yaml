@@ -8,7 +8,7 @@ importers:
 
   .:
     devDependencies:
-      tsconfig:
+      '@price-prediction/tsconfig':
         specifier: workspace:*
         version: link:packages/tsconfig
       turbo:
@@ -27,6 +27,9 @@ importers:
         specifier: ^1.7.11
         version: 1.7.11
     devDependencies:
+      '@price-prediction/tsconfig':
+        specifier: workspace:*
+        version: link:../../packages/tsconfig
       '@solidjs/testing-library':
         specifier: ^0.8.4
         version: 0.8.4(@solidjs/router@0.8.3)(solid-js@1.7.11)
@@ -45,9 +48,6 @@ importers:
       ts-standard:
         specifier: ^12.0.2
         version: 12.0.2(typescript@5.2.2)
-      tsconfig:
-        specifier: workspace:*
-        version: link:../../packages/tsconfig
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
