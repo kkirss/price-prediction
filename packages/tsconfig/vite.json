@@ -2,8 +2,9 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "solid-js",
   "compilerOptions": {
-    "jsxImportSource": "solid-js",
-    "jsx": "preserve",
-    "lib": ["dom", "dom.iterable", "esnext"]
+    "types": [
+      "vite/client",
+      "vitest"
+    ]
   }
 }

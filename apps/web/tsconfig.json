@@ -3,23 +3,31 @@
   "extends": [
     "@price-prediction/tsconfig/base.json",
     "@price-prediction/tsconfig/solid-js.json",
+    "@price-prediction/tsconfig/vite.json"
   ],
   "include": [
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "package.json",
+    "vite.config.ts",
+    "setupVitest.ts"
   ],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "~/*": ["src/*"]
+      "~/*": [
+        "src/*"
+      ]
     },
-    "types": [
-      "vite/client",
-      "vitest"
-    ]
-  }
+    "emitDeclarationOnly": false,
+    "noEmit": true
+  },
+  "references": [
+    {
+      "path": "../../packages/tsconfig"
+    },
+    {
+      "path": "../../packages/ui-theme"
+    }
+  ]
 }

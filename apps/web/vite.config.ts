@@ -8,9 +8,13 @@ import { dependencies } from './package.json'
 // Source: https://sambitsahoo.com/blog/vite-code-splitting-that-works.html
 const renderChunks = (deps: Record<string, string>): Record<string, string[]> =>
   Object.fromEntries(
-    Object.keys(deps).map(
-      (key) => [key, [key]]
-    )
+    Object.keys(deps)
+      // TODO: Split local packages into separate chunks.
+      //       Splitting local packages into separate chunks will include its peer dependencies in the chunk.
+      //       This will greatly increase the size of the chunk.
+      //       Bundling them together avoids this issue.
+      .filter((key) => !key.startsWith('@price-prediction'))
+      .map((key) => [key, [key]])
   )
 
 export default defineConfig({
@@ -27,6 +31,7 @@ export default defineConfig({
   },
   build: {
     target: 'esnext',
+    reportCompressedSize: false,
     rollupOptions: {
       output: {
         manualChunks: {
@@ -34,6 +39,9 @@ export default defineConfig({
         }
       }
     }
+  },
+  resolve: {
+    conditions: ['development']
   },
   test: {
     deps: {

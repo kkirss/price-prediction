@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": [
+    "@price-prediction/tsconfig/base.json",
+    "@price-prediction/tsconfig/solid-js.json"
+  ],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": [
+        "src/*"
+      ]
+    }
+  },
+  "references": [
+    {
+      "path": "../tsconfig"
+    }
+  ]
+}
