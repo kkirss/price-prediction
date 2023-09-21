@@ -2,20 +2,9 @@ import { defineConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import solidPlugin from 'vite-plugin-solid'
 import suidPlugin from '@suid/vite-plugin'
+import { readFileSync } from 'fs'
 
 import { dependencies } from './package.json'
-
-// Source: https://sambitsahoo.com/blog/vite-code-splitting-that-works.html
-const renderChunks = (deps: Record<string, string>): Record<string, string[]> =>
-  Object.fromEntries(
-    Object.keys(deps)
-      // TODO: Split local packages into separate chunks.
-      //       Splitting local packages into separate chunks will include its peer dependencies in the chunk.
-      //       This will greatly increase the size of the chunk.
-      //       Bundling them together avoids this issue.
-      .filter((key) => !key.startsWith('@price-prediction'))
-      .map((key) => [key, [key]])
-  )
 
 export default defineConfig({
   plugins: [
@@ -34,8 +23,20 @@ export default defineConfig({
     reportCompressedSize: false,
     rollupOptions: {
       output: {
-        manualChunks: {
-          ...renderChunks(dependencies)
+        manualChunks: (id) => {
+          if (id.includes('node_modules')) {
+            return Object.keys(dependencies).find((dependency) => {
+              const strippedId = id.split('node_modules/').slice(-1)[0]
+              return strippedId.includes(dependency)
+            })
+          } else if (id.includes('packages')) {
+            if (!id.includes('dist')) {
+              throw new Error(`Package with id ${id} does not contain dist`)
+            }
+            const packageDir = id.split('/dist')[0]
+            const packageJson = JSON.parse(readFileSync(`${packageDir}/package.json`).toString())
+            return packageJson.name
+          }
         }
       }
     }
