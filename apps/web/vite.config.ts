@@ -51,6 +51,6 @@ export default defineConfig({
       inline: [/solid-js/]
     },
     environment: 'jsdom',
-    setupFiles: ['setupVitest.ts']
+    setupFiles: ['src/setupVitest.ts']
   }
 })
