@@ -8,8 +8,8 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
-    "package.json",
-    "vite.config.ts",
+    "index.html",
+    "vite.config.ts"
   ],
   "compilerOptions": {
     "baseUrl": ".",

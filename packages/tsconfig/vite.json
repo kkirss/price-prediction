@@ -2,6 +2,7 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "solid-js",
   "compilerOptions": {
+    "outDir": "dist",
     "types": [
       "vite/client",
       "vitest"

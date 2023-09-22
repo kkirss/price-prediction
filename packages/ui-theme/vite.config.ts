@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
+import dts from 'vite-plugin-dts'
 import { externalizeDeps } from 'vite-plugin-externalize-deps'
 import solidPlugin from 'vite-plugin-solid'
 import suidPlugin from '@suid/vite-plugin'
@@ -10,6 +11,10 @@ const projectPackageJson = JSON.parse(readFileSync('package.json').toString())
 export default defineConfig({
   plugins: [
     tsconfigPaths(),
+    dts({
+      entryRoot: 'src',
+      insertTypesEntry: true
+    }),
     externalizeDeps({
       deps: false
     }),
@@ -23,6 +28,11 @@ export default defineConfig({
     port: 3001
   },
   build: {
+    lib: {
+      entry: 'src/index.ts',
+      fileName: 'index',
+      formats: ['es']
+    },
     reportCompressedSize: false,
     rollupOptions: {
       output: {
