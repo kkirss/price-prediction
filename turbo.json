@@ -4,24 +4,37 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": []
+      "inputs": ["src/**", "package.json", "tsconfig.json", "vite.config.ts"],
+      "outputs": ["dist/**"]
     },
     "dev": {
       "cache": false,
       "persistent": true
     },
-    "lint": {},
-    "lint:fix": {},
-    "check-types": {
-      "outputs": ["tsconfig.tsbuildinfo"]
+    "lint": {
+      "inputs": ["src/**", "package.json", "tsconfig.json", "vite.config.ts"],
+      "outputs": []
     },
-    "test": {},
+    "lint:fix": {
+      "inputs": ["src/**", "package.json", "tsconfig.json", "vite.config.ts"],
+      "outputs": []
+    },
+    "check-types": {
+      "inputs": ["src/**", "package.json", "tsconfig.json", "vite.config.ts"],
+      "outputs": ["dist/**"]
+    },
+    "test": {
+      "inputs": ["src/**", "package.json", "tsconfig.json", "vite.config.ts"],
+      "outputs": []
+    },
     "test:watch": {
       "cache": false,
       "persistent": true
     },
     "serve": {
-      "dependsOn": ["build"]
+      "dependsOn": ["build"],
+      "cache": false,
+      "persistent": true
     }
   }
 }

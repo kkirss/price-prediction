@@ -1,10 +1,10 @@
 {
+  "$schema": "https://turbo.build/schema.json",
   "extends": ["//"],
   "pipeline": {
-    "build": {
-      "outputs": ["dist/**"]
-    },
     "build:gh-pages": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**", "package.json", "tsconfig.json", "vite.config.ts"],
       "outputs": ["dist/**"]
     },
     "deploy:gh-pages": {
