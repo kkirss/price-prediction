@@ -82,3 +82,35 @@ pnpm run deploy:web
 ```bash
 pnpm run build
 ```
+
+## Architecture
+
+### Monorepo
+
+This project is a monorepo, to allow for easier development and deployment.
+
+The repo is split into multiple subprojects.
+Each has its own `package.json` file.
+
+These are further split into:
+* Apps - the main projects (e.g. frontend & backend)
+* Packages - shared libraries used by apps and other packages
+
+Managing the monorepo is done using [pnpm](https://pnpm.io/) and [Turbopack](https://turbo.build/pack).
+
+### Build System
+
+The build system is based on [Vite](https://vitejs.dev/).
+
+To simplify configuring vite, there is a `@price-prediction/vite-config` package which exports partial vite configs:
+* `createBaseConfig` - base config for all subprojects
+* `createLibraryConfig` - config for libraries
+* `createSolidJSConfig` - config for SolidJS
+
+Note: Each subproject must include the relevant vite plugins in `devDependencies`.
+      See the config source files for the list of plugins.
+
+Note: The package is built only as an ES module.
+      This requires each dependency to be an ES module (`"type": "module"` in its `package.json`).
+      If this is an issue, you can add `cjs` to `build.lib.formats` in `getLibraryConfig` and update `main` to point to the CommonJS build.
+      (It currently sets `main` to an ES module to avoid Vite crashing.)
