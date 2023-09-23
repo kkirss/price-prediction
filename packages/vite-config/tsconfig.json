@@ -2,13 +2,11 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": [
     "@price-prediction/tsconfig/base.json",
-    "@price-prediction/tsconfig/solid-js.json",
     "@price-prediction/tsconfig/vite.json"
   ],
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
-    "index.html",
     "vite.config.ts"
   ],
   "compilerOptions": {
@@ -17,19 +15,11 @@
       "~/*": [
         "src/*"
       ]
-    },
-    "emitDeclarationOnly": false,
-    "noEmit": true
+    }
   },
   "references": [
     {
-      "path": "../../packages/tsconfig"
-    },
-    {
-      "path": "../../packages/ui-theme"
-    },
-    {
-      "path": "../../packages/vite-config"
+      "path": "../tsconfig"
     }
   ]
 }

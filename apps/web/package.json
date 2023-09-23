@@ -2,6 +2,7 @@
   "name": "@price-prediction/web",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "vite build",
     "dev": "vite",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "@price-prediction/tsconfig": "workspace:*",
+    "@price-prediction/vite-config": "workspace:*",
     "@solidjs/testing-library": "^0.8.4",
     "@suid/vite-plugin": "^0.1.4",
     "@testing-library/jest-dom": "^6.1.3",

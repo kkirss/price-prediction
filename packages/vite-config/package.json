@@ -1,9 +1,10 @@
 {
-  "name": "@price-prediction/ui-theme",
+  "name": "@price-prediction/vite-config",
   "version": "1.0.0",
   "private": true,
   "type": "module",
   "files": ["dist"],
+  "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -13,21 +14,22 @@
     "lint:fix": "ts-standard --fix",
     "check-types": "pnpm run build"
   },
-  "peerDependencies": {
-    "@suid/material": "^0.14.2",
-    "solid-js": "^1.7.11"
+  "dependencies": {
+    "deepmerge-ts": "^5.1.0"
   },
-  "devDependencies": {
-    "@price-prediction/tsconfig": "workspace:*",
-    "@price-prediction/vite-config": "workspace:*",
+  "peerDependencies": {
     "@suid/vite-plugin": "^0.1.4",
-    "ts-standard": "^12.0.2",
-    "typescript": "^5.2.2",
     "vite": "^4.4.9",
     "vite-plugin-dts": "^3.5.4",
     "vite-plugin-externalize-deps": "^0.7.0",
     "vite-plugin-solid": "^2.7.0",
-    "vite-tsconfig-paths": "^4.2.1"
+    "vite-tsconfig-paths": "^4.2.1",
+    "vitest": "^0.34.4"
+  },
+  "devDependencies": {
+    "@price-prediction/tsconfig": "workspace:*",
+    "ts-standard": "^12.0.2",
+    "typescript": "^5.2.2"
   },
   "ts-standard": {
     "ignore": ["dist"]

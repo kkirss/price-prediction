@@ -21,6 +21,9 @@
   "references": [
     {
       "path": "../tsconfig"
+    },
+    {
+      "path": "../vite-config"
     }
   ]
 }
