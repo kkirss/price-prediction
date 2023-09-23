@@ -8,8 +8,17 @@
       "outputs": ["dist/**"]
     },
     "dev": {
+      "dependsOn": ["dev-clean-build", "^dev-wait-build"],
       "cache": false,
       "persistent": true
+    },
+    "dev-clean-build": {
+      "dependsOn": [],
+      "cache": false
+    },
+    "dev-wait-build": {
+      "dependsOn": ["dev-clean-build", "^dev-wait-build"],
+      "cache": false
     },
     "lint": {
       "inputs": ["src/**", "package.json", "tsconfig.json", "vite.config.ts"],
