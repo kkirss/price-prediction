@@ -114,3 +114,6 @@ Note: The package is built only as an ES module.
       This requires each dependency to be an ES module (`"type": "module"` in its `package.json`).
       If this is an issue, you can add `cjs` to `build.lib.formats` in `getLibraryConfig` and update `main` to point to the CommonJS build.
       (It currently sets `main` to an ES module to avoid Vite crashing.)
+
+Note: The package is not run in watch mode when running `pnpm run dev`.
+      This improves performance, but means that changes to the config will not be picked up until the next build.
