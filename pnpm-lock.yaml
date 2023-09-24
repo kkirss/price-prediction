@@ -80,9 +80,15 @@ importers:
       '@suid/material':
         specifier: ^0.14.2
         version: 0.14.2(solid-js@1.7.11)
+      '@suid/system':
+        specifier: ^0.10.4
+        version: 0.10.4(solid-js@1.7.11)
       solid-js:
         specifier: ^1.7.11
         version: 1.7.11
+      solid-services:
+        specifier: ^4.3.2
+        version: 4.3.2(solid-js@1.7.11)
     devDependencies:
       '@price-prediction/tsconfig':
         specifier: workspace:*
@@ -90,9 +96,15 @@ importers:
       '@price-prediction/vite-config':
         specifier: workspace:*
         version: link:../vite-config
+      '@solidjs/testing-library':
+        specifier: ^0.8.4
+        version: 0.8.4(@solidjs/router@0.8.3)(solid-js@1.7.11)
       '@suid/vite-plugin':
         specifier: ^0.1.4
         version: 0.1.4(vite@4.4.9)
+      '@testing-library/jest-dom':
+        specifier: ^6.1.3
+        version: 6.1.3(vitest@0.34.5)
       rimraf:
         specifier: ^5.0.1
         version: 5.0.1
@@ -955,6 +967,35 @@ packages:
       lodash: 4.17.21
       redent: 3.0.0
       vitest: 0.34.4(jsdom@22.1.0)
+    dev: true
+
+  /@testing-library/jest-dom@6.1.3(vitest@0.34.5):
+    resolution: {integrity: sha512-YzpjRHoCBWPzpPNtg6gnhasqtE/5O4qz8WCwDEaxtfnPO6gkaLrnuXusrGSPyhIGPezr1HM7ZH0CFaUTY9PJEQ==}
+    engines: {node: '>=14', npm: '>=6', yarn: '>=1'}
+    peerDependencies:
+      '@jest/globals': '>= 28'
+      '@types/jest': '>= 28'
+      jest: '>= 28'
+      vitest: '>= 0.32'
+    peerDependenciesMeta:
+      '@jest/globals':
+        optional: true
+      '@types/jest':
+        optional: true
+      jest:
+        optional: true
+      vitest:
+        optional: true
+    dependencies:
+      '@adobe/css-tools': 4.3.1
+      '@babel/runtime': 7.22.15
+      aria-query: 5.3.0
+      chalk: 3.0.0
+      css.escape: 1.5.1
+      dom-accessibility-api: 0.5.16
+      lodash: 4.17.21
+      redent: 3.0.0
+      vitest: 0.34.5
     dev: true
 
   /@tootallnate/once@2.0.0:
@@ -3724,6 +3765,14 @@ packages:
       '@babel/helper-module-imports': 7.22.15
       '@babel/types': 7.22.19
       solid-js: 1.7.11
+
+  /solid-services@4.3.2(solid-js@1.7.11):
+    resolution: {integrity: sha512-168O7I1ZuE3aXkz63NiDKAibHkToFl4BTtaIcmqarNb5VRTbqZMaB3+B4JmNUW+LtTX5BfjpJNomGQsLWd1mdQ==}
+    peerDependencies:
+      solid-js: ^1.0.0
+    dependencies:
+      solid-js: 1.7.11
+    dev: false
 
   /source-map-js@1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
