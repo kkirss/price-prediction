@@ -21,18 +21,22 @@
       "cache": false
     },
     "lint": {
+      "dependsOn": ["^check-types"],
       "inputs": ["src/**", "package.json", "tsconfig.json", "vite.config.ts"],
       "outputs": []
     },
     "lint:fix": {
+      "dependsOn": ["^check-types"],
       "inputs": ["src/**", "package.json", "tsconfig.json", "vite.config.ts"],
       "outputs": []
     },
     "check-types": {
+      "dependsOn": ["^check-types"],
       "inputs": ["src/**", "package.json", "tsconfig.json", "vite.config.ts"],
-      "outputs": ["dist/**"]
+      "outputs": ["dist-types/**"]
     },
     "test": {
+      "dependsOn": ["^build"],
       "inputs": ["src/**", "package.json", "tsconfig.json", "vite.config.ts"],
       "outputs": []
     },

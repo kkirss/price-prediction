@@ -8,7 +8,7 @@
     "dev": "vite",
     "lint": "ts-standard",
     "lint:fix": "ts-standard --fix",
-    "check-types": "pnpm run build",
+    "check-types": "tsc",
     "test": "vitest run",
     "test:watch": "vitest",
     "serve": "vite preview",
@@ -38,6 +38,6 @@
     "vitest": "^0.34.4"
   },
   "ts-standard": {
-    "ignore": ["dist"]
+    "ignore": ["dist", "dist-types"]
   }
 }

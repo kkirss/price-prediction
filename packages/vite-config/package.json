@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "files": ["dist"],
+  "files": [
+    "dist",
+    "src"
+  ],
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "types": "src/index.ts",
   "scripts": {
     "dev": "echo 'vite-config is not run in watch mode'",
     "dev-clean-build": "rimraf dist",
@@ -14,7 +17,7 @@
     "build": "vite build",
     "lint": "ts-standard",
     "lint:fix": "ts-standard --fix",
-    "check-types": "pnpm run build"
+    "check-types": "tsc"
   },
   "dependencies": {
     "deepmerge-ts": "^5.1.0"
@@ -22,7 +25,6 @@
   "peerDependencies": {
     "@suid/vite-plugin": "^0.1.4",
     "vite": "^4.4.9",
-    "vite-plugin-dts": "^3.5.4",
     "vite-plugin-externalize-deps": "^0.7.0",
     "vite-plugin-solid": "^2.7.0",
     "vite-tsconfig-paths": "^4.2.1",
@@ -36,6 +38,6 @@
     "wait-on": "^7.0.1"
   },
   "ts-standard": {
-    "ignore": ["dist"]
+    "ignore": ["dist", "dist-types"]
   }
 }
