@@ -7,6 +7,7 @@
     "dist",
     "src"
   ],
+  "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "src/index.ts",
   "scripts": {
@@ -21,6 +22,7 @@
     "test:watch": "vitest"
   },
   "peerDependencies": {
+    "@suid/icons-material": "^0.6.9",
     "@suid/material": "^0.14.2",
     "@suid/system": "^0.10.4",
     "solid-js": "^1.7.11",

@@ -18,8 +18,10 @@
   "dependencies": {
     "@price-prediction/ui-theme": "workspace:*",
     "@solidjs/router": "^0.8.3",
+    "@suid/icons-material": "^0.6.9",
     "@suid/material": "^0.14.2",
-    "solid-js": "^1.7.11"
+    "solid-js": "^1.7.11",
+    "solid-services": "^4.3.2"
   },
   "devDependencies": {
     "@price-prediction/tsconfig": "workspace:*",

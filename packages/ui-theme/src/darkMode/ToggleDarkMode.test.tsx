@@ -1,11 +1,10 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { render } from '@solidjs/testing-library'
 import { Component } from 'solid-js'
-import { useTheme } from '@suid/material'
-import { ServiceRegistry } from 'solid-services'
+import { ServiceRegistry, useService } from 'solid-services'
 
-import { ToggleDarkMode } from '~/darkMode'
-import { ThemeProvider } from './ThemeProvider'
+import { DarkModeService } from './darkModeService'
+import { ToggleDarkMode } from './ToggleDarkMode'
 
 const mocks = vi.hoisted(() => ({
   usePrefersDarkMode: vi.fn()
@@ -15,13 +14,17 @@ vi.mock('~/darkMode/usePrefersDarkMode', () => ({
   usePrefersDarkMode: mocks.usePrefersDarkMode
 }))
 
-const ThemePaletteModeTest: Component = () => (
-  <p data-testid='themePaletteMode'>
-    {useTheme().palette.mode}
-  </p>
-)
+const DarkModeTest: Component = () => {
+  const darkModeService = useService(DarkModeService)
+  const darkModeString = (): string => String(darkModeService().darkMode())
+  return (
+    <p data-testid='darkModeEnabled'>
+      {darkModeString()}
+    </p>
+  )
+}
 
-describe('ThemeProvider', () => {
+describe('ToggleDarkMode', () => {
   afterEach(() => {
     vi.restoreAllMocks()
   })
@@ -31,19 +34,17 @@ describe('ThemeProvider', () => {
 
     const { getByRole, getByTestId } = render(() => (
       <ServiceRegistry>
-        <ThemeProvider>
-          <ToggleDarkMode />
-          <ThemePaletteModeTest />
-        </ThemeProvider>
+        <ToggleDarkMode />
+        <DarkModeTest />
       </ServiceRegistry>
     ))
 
-    expect(getByTestId('themePaletteMode')).toHaveTextContent('light')
+    expect(getByTestId('darkModeEnabled')).toHaveTextContent('false')
 
     const toggleDarkModeButton = getByRole('button', { name: 'Toggle dark mode' })
     toggleDarkModeButton.click()
     await Promise.resolve()
 
-    expect(getByTestId('themePaletteMode')).toHaveTextContent('dark')
+    expect(getByTestId('darkModeEnabled')).toHaveTextContent('true')
   })
 })
