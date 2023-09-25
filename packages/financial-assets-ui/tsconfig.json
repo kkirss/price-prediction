@@ -8,7 +8,6 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
-    "index.html",
     "vite.config.ts"
   ],
   "compilerOptions": {
@@ -18,22 +17,14 @@
       "~/*": [
         "src/*"
       ]
-    },
-    "emitDeclarationOnly": false,
-    "noEmit": true
+    }
   },
   "references": [
     {
-      "path": "../../packages/financial-assets-ui"
+      "path": "../tsconfig"
     },
     {
-      "path": "../../packages/tsconfig"
-    },
-    {
-      "path": "../../packages/ui-theme"
-    },
-    {
-      "path": "../../packages/vite-config"
+      "path": "../vite-config"
     }
   ]
 }
