@@ -32,6 +32,9 @@ importers:
       '@suid/material':
         specifier: ^0.14.2
         version: 0.14.2(solid-js@1.7.11)
+      '@suid/system':
+        specifier: ^0.10.5
+        version: 0.10.5(solid-js@1.7.11)
       solid-js:
         specifier: ^1.7.11
         version: 1.7.11
