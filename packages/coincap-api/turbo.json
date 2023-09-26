@@ -1,0 +1,21 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "extends": ["//"],
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build", "update-schema"]
+    },
+    "dev": {
+      "dependsOn": ["dev-clean-build", "^dev-wait-build", "update-schema"]
+    },
+    "lint-schema": {
+      "inputs": ["src/openAPI/schema.json"],
+      "outputs": []
+    },
+    "update-schema": {
+      "dependsOn": ["lint-schema"],
+      "inputs": ["src/openAPI/schema.json"],
+      "outputs": ["src/openAPI/schema.ts"]
+    }
+  }
+}

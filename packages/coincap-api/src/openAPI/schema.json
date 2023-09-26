@@ -1,0 +1,265 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "CoinCap API",
+    "version": "2.0",
+    "description": "All credits go to CoinCap: https://coincap.io\n\nThis schema has been derived from CoinCap API docs: https://docs.coincap.io\n\nNB: I am unsure which license to set in this document. In any case, you must follow CoinCap's terms of service: https://assets.coincap.io/documents/terms_of_service.pdf",
+    "termsOfService": "https://assets.coincap.io/documents/terms_of_service.pdf",
+    "contact": {
+      "name": "CoinCap website",
+      "url": "https://coincap.io"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/license/mit/"
+    }
+  },
+  "externalDocs": {
+    "url": "https://docs.coincap.io",
+    "description": "CoinCap API official documentation"
+  },
+  "servers": [
+    {
+      "description": "Production",
+      "url": "https://api.coincap.io"
+    }
+  ],
+  "security": [
+    {},
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "description": "Example:\nAuthorization: Bearer <token>",
+        "scheme": "bearer",
+        "bearerFormat": "apiKey"
+      }
+    },
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "required": [
+          "error",
+          "timestamp"
+        ],
+        "properties": {
+          "error": {
+            "type": "string",
+            "example": [
+              "Not found"
+            ]
+          },
+          "timestamp": {
+            "type": "number",
+            "example": [
+              1533581098863
+            ]
+          }
+        }
+      },
+      "Asset": {
+        "type": "object",
+        "example": {
+          "id": "bitcoin",
+          "rank": "1",
+          "symbol": "BTC",
+          "name": "Bitcoin",
+          "supply": "17193925.0000000000000000",
+          "maxSupply": "21000000.0000000000000000",
+          "marketCapUsd": "119150835874.4699281625807300",
+          "volumeUsd24Hr": "2927959461.1750323310959460",
+          "priceUsd": "6929.8217756835584756",
+          "changePercent24Hr": "-0.8101417214350335",
+          "vwap24Hr": "7175.0663247679233209"
+        },
+        "required": [
+          "id",
+          "rank",
+          "symbol",
+          "name",
+          "supply",
+          "maxSupply",
+          "marketCapUsd",
+          "volumeUsd24Hr",
+          "priceUsd",
+          "changePercent24Hr",
+          "vwap24Hr"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": [
+              "bitcoin"
+            ]
+          },
+          "rank": {
+            "type": "string",
+            "example": [
+              "1"
+            ]
+          },
+          "symbol": {
+            "type": "string",
+            "example": [
+              "BTC"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "example": [
+              "Bitcoin"
+            ]
+          },
+          "supply": {
+            "type": "string",
+            "example": [
+              "17193925.0000000000000000"
+            ]
+          },
+          "maxSupply": {
+            "type": "string",
+            "example": [
+              "21000000.0000000000000000"
+            ]
+          },
+          "marketCapUsd": {
+            "type": "string",
+            "example": [
+              "119150835874.4699281625807300"
+            ]
+          },
+          "volumeUsd24Hr": {
+            "type": "string",
+            "example": [
+              "2927959461.1750323310959460"
+            ]
+          },
+          "priceUsd": {
+            "type": "string",
+            "example": [
+              "6929.8217756835584756"
+            ]
+          },
+          "changePercent24Hr": {
+            "type": "string",
+            "example": [
+              "-0.8101417214350335"
+            ]
+          },
+          "vwap24Hr": {
+            "type": "string",
+            "example": [
+              "7175.0663247679233209"
+            ]
+          }
+        }
+      },
+      "AssetDetailsResponse": {
+        "type": "object",
+        "example": {
+          "data": {
+            "id": "bitcoin",
+            "rank": "1",
+            "symbol": "BTC",
+            "name": "Bitcoin",
+            "supply": "17193925.0000000000000000",
+            "maxSupply": "21000000.0000000000000000",
+            "marketCapUsd": "119150835874.4699281625807300",
+            "volumeUsd24Hr": "2927959461.1750323310959460",
+            "priceUsd": "6929.8217756835584756",
+            "changePercent24Hr": "-0.8101417214350335",
+            "vwap24Hr": "7175.0663247679233209"
+          },
+          "timestamp": 1533581098863
+        },
+        "required": [
+          "data",
+          "timestamp"
+        ],
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/Asset"
+          },
+          "timestamp": {
+            "type": "number",
+            "example": [
+              1533581098863
+            ]
+          }
+        }
+      }
+    },
+    "headers": {},
+    "parameters": {
+      "assetId": {
+        "in": "path",
+        "name": "id",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    },
+    "responses": {
+      "NotFoundResponse": {
+        "description": "Not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "BadRequestResponse": {
+        "description": "Bad request",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "AssetDetailsResponse": {
+        "description": "Asset details response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/AssetDetailsResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/v2/assets/{id}": {
+      "summary": "Asset details",
+      "get": {
+        "summary": "Get asset details",
+        "operationId": "getAssetDetails",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/AssetDetailsResponse"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestResponse"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundResponse"
+          }
+        }
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/assetId"
+        }
+      ]
+    }
+  }
+}
