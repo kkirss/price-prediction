@@ -17,6 +17,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@price-prediction/coincap-api':
+        specifier: workspace:*
+        version: link:../../packages/coincap-api
       '@price-prediction/financial-assets-ui':
         specifier: workspace:*
         version: link:../../packages/financial-assets-ui
@@ -35,6 +38,12 @@ importers:
       '@suid/system':
         specifier: ^0.10.5
         version: 0.10.5(solid-js@1.7.11)
+      '@tanstack/solid-query':
+        specifier: ^4.35.3
+        version: 4.35.3(solid-js@1.7.11)
+      openapi-fetch:
+        specifier: ^0.7.6
+        version: 0.7.6
       solid-js:
         specifier: ^1.7.11
         version: 1.7.11
@@ -2214,6 +2223,19 @@ packages:
       vite: 4.4.9(@types/node@20.6.2)
     transitivePeerDependencies:
       - supports-color
+
+  /@tanstack/query-core@4.35.3:
+    resolution: {integrity: sha512-PS+WEjd9wzKTyNjjQymvcOe1yg8f3wYc6mD+vb6CKyZAKvu4sIJwryfqfBULITKCla7P9C4l5e9RXePHvZOZeQ==}
+    dev: false
+
+  /@tanstack/solid-query@4.35.3(solid-js@1.7.11):
+    resolution: {integrity: sha512-RQvUjWJgg1vyuPVMEqshM/ZBzA3ZgDynyQppc3vXW/OWJ+PaOMpCbgZAiBP2ROuk0Ag8xxeGMBuEJ7ESUjCCgg==}
+    peerDependencies:
+      solid-js: ^1.5.7
+    dependencies:
+      '@tanstack/query-core': 4.35.3
+      solid-js: 1.7.11
+    dev: false
 
   /@testing-library/dom@9.3.3:
     resolution: {integrity: sha512-fB0R+fa3AUqbLHWyxXa2kGVtf1Fe1ZZFr0Zp6AIbIAzXb2mKbEXl+PCQNUOaq5lbTab5tfctfXRNsWXxa2f7Aw==}

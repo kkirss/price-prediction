@@ -24,6 +24,9 @@
   },
   "references": [
     {
+      "path": "../../packages/coincap-api"
+    },
+    {
       "path": "../../packages/financial-assets-ui"
     },
     {

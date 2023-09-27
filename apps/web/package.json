@@ -16,12 +16,15 @@
     "deploy:gh-pages": "gh-pages --dist dist --dotfiles"
   },
   "dependencies": {
+    "@price-prediction/coincap-api": "workspace:*",
     "@price-prediction/financial-assets-ui": "workspace:*",
     "@price-prediction/ui-theme": "workspace:*",
     "@solidjs/router": "^0.8.3",
     "@suid/icons-material": "^0.6.9",
     "@suid/material": "^0.14.2",
     "@suid/system": "^0.10.5",
+    "@tanstack/solid-query": "^4.35.3",
+    "openapi-fetch": "^0.7.6",
     "solid-js": "^1.7.11",
     "solid-services": "^4.3.2"
   },

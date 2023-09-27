@@ -12,6 +12,7 @@ const Home: Component = () =>
   }}
   >
     <PricePrediction
+      assetId='bitcoin'
       sx={{ minWidth: '50%' }}
     />
   </Box>
