@@ -9,6 +9,7 @@ import { PredictionDirection } from '~/types'
 export const PredictAssetPrice: Component<{
   assetName: string
   price: number
+  priceDecimalPlaces?: number
   currencySymbol: string
   onPredictPrice: (direction: PredictionDirection) => void
   predictionLocked?: boolean
@@ -27,6 +28,7 @@ export const PredictAssetPrice: Component<{
     <AssetPriceDisplay
       assetName={props.assetName}
       price={props.price}
+      priceDecimalPlaces={props.priceDecimalPlaces}
       currencySymbol={props.currencySymbol}
       sx={{ flexGrow: 1 }}
     />

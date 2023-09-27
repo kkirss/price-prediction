@@ -6,23 +6,30 @@ export const AssetPriceDisplay: Component<{
   assetName: string
   price: number
   currencySymbol: string
+  priceDecimalPlaces?: number
   sx?: SxProps
-}> = (props) => (
-  <Box sx={{
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    ...props.sx
-  }}
-  >
-    <Typography variant='h4'>{props.assetName}</Typography>
-    <Box>
-      <Typography variant='h1' as='span'>
-        {props.price}
+}> = (props) => {
+  const priceDecimal = (): string =>
+    props.price.toFixed(props.priceDecimalPlaces ?? 2)
+  return (
+    <Box sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      ...props.sx
+    }}
+    >
+      <Typography variant='h4'>
+        {props.assetName}
       </Typography>
-      <Typography variant='h5' as='span'>
-        {props.currencySymbol}
-      </Typography>
+      <Box>
+        <Typography variant='h1' as='span'>
+          {priceDecimal()}
+        </Typography>
+        <Typography variant='h5' as='span'>
+          {props.currencySymbol}
+        </Typography>
+      </Box>
     </Box>
-  </Box>
-)
+  )
+}

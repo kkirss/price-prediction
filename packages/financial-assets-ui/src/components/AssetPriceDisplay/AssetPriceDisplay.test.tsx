@@ -12,9 +12,9 @@ describe('AssetPriceDisplay', () => {
   })
   it('should render asset price', () => {
     const { getByText } = render(() =>
-      <AssetPriceDisplay assetName='Bitcoin' price={1} currencySymbol='$' />
+      <AssetPriceDisplay assetName='Bitcoin' price={1} priceDecimalPlaces={3} currencySymbol='$' />
     )
-    expect(getByText('1')).toBeInTheDocument()
+    expect(getByText('1.000')).toBeInTheDocument()
     expect(getByText('$')).toBeInTheDocument()
   })
 })
