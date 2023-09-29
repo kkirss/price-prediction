@@ -4,6 +4,8 @@ import { render } from 'solid-js/web'
 import App from './App'
 import AppContext from './AppContext'
 
+import 'solid-devtools'
+
 const root = document.getElementById('root')
 
 if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
