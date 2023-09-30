@@ -10,7 +10,11 @@
     "test": "turbo run test",
     "test:watch": "turbo run test:watch",
     "serve": "turbo run serve",
-    "deploy:web": "turbo run --filter web deploy:web"
+    "deploy:web": "turbo run --filter web deploy:web",
+    "deploy:backend": "turbo run --filter infra-api deploy:backend",
+    "infra-init": "turbo run infra-init",
+    "infra-plan": "turbo run infra-plan",
+    "infra-deploy": "turbo run infra-deploy"
   },
   "devDependencies": {
     "@price-prediction/tsconfig": "workspace:*",

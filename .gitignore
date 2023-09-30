@@ -35,3 +35,18 @@ yarn-error.log*
 
 # turbo
 .turbo
+
+# Local .terraform directories
+.terraform
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# Local .tfvars files
+local.auto.tfvars
+local.auto.tfvars.json
+
+# Ignore CLI configuration files
+.terraformrc
+terraform.rc

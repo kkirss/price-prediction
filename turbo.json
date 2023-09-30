@@ -48,6 +48,23 @@
       "dependsOn": ["build"],
       "cache": false,
       "persistent": true
+    },
+    "infra-init": {
+      "dependsOn": ["@price-prediction/infra-backend-bucket#infra-deploy"],
+      "inputs": ["providers.tf"],
+      "outputs": [".terraform/**"]
+    },
+    "infra-plan": {
+      "dependsOn": ["infra-init"],
+      "inputs": ["**.tf", "**.tfvars", "package.json"],
+      "outputs": [],
+      "cache": false
+    },
+    "infra-deploy": {
+      "dependsOn": ["infra-init", "^infra-deploy"],
+      "inputs": ["**.tf", "**.tfvars", "package.json"],
+      "outputs": [],
+      "cache": false
     }
   }
 }

@@ -1,0 +1,15 @@
+{
+  "name": "@price-prediction/infra-backend-bucket",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "lint": "terraform fmt -check -recursive",
+    "lint:fix": "terraform fmt -recursive",
+    "infra-init": "cross-env SCW_PROFILE=price-prediction-prod AWS_PROFILE=scaleway-price-prediction-prod terraform init",
+    "infra-plan": "cross-env SCW_PROFILE=price-prediction-prod AWS_PROFILE=scaleway-price-prediction-prod terraform plan",
+    "infra-deploy": "cross-env SCW_PROFILE=price-prediction-prod AWS_PROFILE=scaleway-price-prediction-prod terraform apply -auto-approve"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  }
+}

@@ -20,6 +20,11 @@ https://kkirss.github.io/price-prediction/
 
 * [Express](https://expressjs.com/) _(web server)_
 
+### Infrastructure
+
+* [Terraform](https://www.terraform.io/) _(infrastructure as code)_
+* [Scaleway](https://www.scaleway.com/) _(cloud provider)_
+
 ## Development
 
 ### Requirements
@@ -81,10 +86,45 @@ To deploy the web frontend to GitHub Pages:
 pnpm run deploy:web
 ```
 
-### Build
+### Backend
 
+#### Requirements
+
+* [terraform](https://www.terraform.io/downloads.html)
+
+#### Scaleway
+
+We use Scaleway as the cloud provider.
+To deploy to Scaleway, you need to:
+1. [Create a Scaleway account/organization](https://www.scaleway.com/en/docs/console/my-account/quickstart/)
+2. [Create a Scaleway project (or use the default one)](https://www.scaleway.com/en/docs/console/my-project/how-to/create-a-project/)
+3. [Create a Scaleway API key](https://www.scaleway.com/en/docs/identity-and-access-management/iam/how-to/create-api-keys/)
+
+#### Credentials
+
+Put Scaleway credentials in `~/.config/scw/config.yaml`:
+```yaml
+profiles:
+  price-prediction-prod:
+    access_key: scaleway_access_key
+    secret_key: scaleway_secret_key
+    default_organization_id: scaleway_organization_id
+    default_project_id: scaleway_project_id
+```
+
+Additionally, put Scaleway credentials in `~/.aws/credentials`:
+```ini
+[scaleway-price-prediction-prod]
+aws_access_key_id = scaleway_access_key
+aws_secret_access_key = scaleway_secret_key
+```
+(Need this because Terraform uses the AWS S3 backend.)
+
+#### Deployment
+
+To deploy the backend to Scaleway:
 ```bash
-pnpm run build
+pnpm run deploy:backend
 ```
 
 ## Architecture
@@ -121,3 +161,11 @@ Note: The package is built only as an ES module.
 
 Note: The package is not run in watch mode when running `pnpm run dev`.
       This improves performance, but means that changes to the config will not be picked up until the next build.
+
+### Infrastructure
+
+The infrastructure is managed using [Terraform](https://www.terraform.io/).
+This allows defining the infrastructure as code (IaC).
+
+We use [Scaleway](https://www.scaleway.com/) as the cloud provider.
+Using it because it's cheap, has good features and has a Terraform provider.
