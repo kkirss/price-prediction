@@ -16,6 +16,10 @@ https://kkirss.github.io/price-prediction/
 
 * [SolidJS](https://www.solidjs.com/) _(frontend framework)_
 
+### Backend
+
+* [Express](https://expressjs.com/) _(web server)_
+
 ## Development
 
 ### Requirements
