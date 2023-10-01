@@ -9,6 +9,13 @@ export default defineConfig(combine(
     server: {
       port: 4000
     },
+    build: {
+      rollupOptions: {
+        output: {
+          entryFileNames: '[name].mjs'
+        }
+      }
+    },
     plugins: [
       ...VitePluginNode({
         adapter: 'express',

@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "main": "dist/server.js",
-  "module": "dist/server.js",
+  "main": "dist/server.mjs",
+  "module": "dist/server.mjs",
   "types": "src/server.ts",
   "scripts": {
     "build": "vite build",
@@ -14,7 +14,7 @@
     "check-types": "tsc",
     "test": "vitest run",
     "test:watch": "vitest",
-    "serve": "cross-env PORT=4000 node dist/server.js"
+    "serve": "cross-env PORT=4000 node dist/server.mjs"
   },
   "dependencies": {
     "express": "^4.18.2"
