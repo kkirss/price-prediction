@@ -23,11 +23,13 @@
     "deepmerge-ts": "^5.1.0"
   },
   "peerDependencies": {
-    "@suid/vite-plugin": "^0.1.4",
     "vite": "^4.4.9",
+    "vite-tsconfig-paths": "^4.2.1"
+  },
+  "optionalDependencies": {
+    "@suid/vite-plugin": "^0.1.4",
     "vite-plugin-externalize-deps": "^0.7.0",
     "vite-plugin-solid": "^2.7.0",
-    "vite-tsconfig-paths": "^4.2.1",
     "vitest": "^0.34.4"
   },
   "devDependencies": {
