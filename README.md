@@ -77,6 +77,15 @@ pnpm run test:watch
 pnpm run serve
 ```
 
+#### Run Docker Locally
+
+The backend is deployed as a Docker container.
+You can test the container locally using:
+```bash
+pnpm run serve-docker
+```
+Note: This doesn't start the frontend.
+
 ## Deploy
 
 ### Frontend
@@ -90,6 +99,7 @@ pnpm run deploy:web
 
 #### Requirements
 
+* [Docker](https://www.docker.com/products/docker-desktop)
 * [terraform](https://www.terraform.io/downloads.html)
 
 #### Scaleway

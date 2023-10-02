@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
+    "build-docker": "turbo run build-docker",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
@@ -10,6 +11,7 @@
     "test": "turbo run test",
     "test:watch": "turbo run test:watch",
     "serve": "turbo run serve",
+    "serve-docker": "turbo run serve-docker",
     "deploy:web": "turbo run --filter web deploy:web",
     "deploy:backend": "turbo run --filter infra-api deploy:backend",
     "infra-init": "turbo run infra-init",

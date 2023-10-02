@@ -8,13 +8,15 @@
   "types": "src/server.ts",
   "scripts": {
     "build": "vite build",
+    "build-docker": "docker build ../.. --file Dockerfile --build-arg='APP_NAME=api' --build-arg='ENTRY_FILE_NAME=server.mjs' --tag price-prediction-api:latest",
     "dev": "vite",
     "lint": "ts-standard",
     "lint:fix": "ts-standard --fix",
     "check-types": "tsc",
     "test": "vitest run",
     "test:watch": "vitest",
-    "serve": "cross-env PORT=4000 node dist/server.mjs"
+    "serve": "cross-env PORT=4000 node dist/server.mjs",
+    "serve-docker": "docker run -p 4000:4000 --env PORT=4000 --name price-prediction-api --rm price-prediction-api:latest"
   },
   "dependencies": {
     "express": "^4.18.2"
