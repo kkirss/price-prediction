@@ -37,6 +37,9 @@
     "rimraf": "^5.0.1",
     "ts-standard": "^12.0.2",
     "typescript": "^5.2.2",
+    "vite": "^4.4.9",
+    "vite-tsconfig-paths": "^4.2.1",
+    "vite-plugin-externalize-deps": "^0.7.0",
     "wait-on": "^7.0.1"
   },
   "ts-standard": {
