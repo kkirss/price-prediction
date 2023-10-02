@@ -71,6 +71,7 @@
       "inputs": ["**.tf", "**.tfvars", "package.json"],
       "outputs": [],
       "cache": false
-    }
+    },
+    "migrate-db-dev": {}
   }
 }

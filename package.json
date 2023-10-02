@@ -17,7 +17,8 @@
     "infra-init": "turbo run infra-init",
     "infra-plan": "turbo run infra-plan",
     "infra-deploy": "turbo run infra-deploy",
-    "infra-destroy": "turbo run infra-destroy"
+    "infra-destroy": "turbo run infra-destroy",
+    "migrate-db-dev": "turbo run migrate-db-dev"
   },
   "devDependencies": {
     "@price-prediction/tsconfig": "workspace:*",

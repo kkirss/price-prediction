@@ -19,6 +19,8 @@ https://kkirss.github.io/price-prediction/
 ### Backend
 
 * [Express](https://expressjs.com/) _(web server)_
+* [Prisma](https://www.prisma.io/) _(database ORM)_
+* [Lucia](https://lucia-auth.com/) _(authentication)_
 
 ### Infrastructure
 
