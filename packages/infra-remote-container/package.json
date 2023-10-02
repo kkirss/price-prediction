@@ -1,0 +1,13 @@
+{
+  "name": "@price-prediction/infra-remote-container",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "lint": "terraform fmt -check -recursive",
+    "lint:fix": "terraform fmt -recursive"
+  },
+  "dependencies": {
+    "@price-prediction/infra-backend-bucket": "workspace:*",
+    "@price-prediction/infra-container-namespace": "workspace:*"
+  }
+}

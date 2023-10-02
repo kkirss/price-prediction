@@ -1,0 +1,14 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "extends": ["//"],
+  "pipeline": {
+    "lint": {
+      "inputs": ["**.tf", "**.tfvars", "package.json"],
+      "outputs": ["**.tf"]
+    },
+    "lint:fix": {
+      "inputs": ["**.tf", "**.tfvars", "package.json"],
+      "outputs": ["**.tf"]
+    }
+  }
+}

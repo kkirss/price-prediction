@@ -280,6 +280,15 @@ importers:
         specifier: ^7.0.1
         version: 7.0.1
 
+  packages/infra-remote-container:
+    dependencies:
+      '@price-prediction/infra-backend-bucket':
+        specifier: workspace:*
+        version: link:../../apps/infra-backend-bucket
+      '@price-prediction/infra-container-namespace':
+        specifier: workspace:*
+        version: link:../../apps/infra-container-namespace
+
   packages/tsconfig: {}
 
   packages/ui-theme:
