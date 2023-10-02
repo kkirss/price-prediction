@@ -73,6 +73,9 @@ importers:
       '@price-prediction/infra-backend-bucket':
         specifier: workspace:*
         version: link:../infra-backend-bucket
+      '@price-prediction/infra-remote-container':
+        specifier: workspace:*
+        version: link:../../packages/infra-remote-container
     devDependencies:
       cross-env:
         specifier: ^7.0.3

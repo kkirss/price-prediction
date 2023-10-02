@@ -97,11 +97,17 @@ pnpm run deploy:web
 
 ### Backend
 
+NB: For some reason, the backend container doesn't work in Scaleway.
+    It returns 502 Bad Gateway with "unexpected EOF".
+    Based on logs, it seems the container never gets the request in the first place.
+
 #### Requirements
 
 * [Docker](https://www.docker.com/products/docker-desktop)
 * [terraform](https://www.terraform.io/downloads.html)
 * [scaleway-cli](https://github.com/scaleway/scaleway-cli#installation)
+
+Note: Currently only works on Windows (depends on `pwsh` in `apps/infra-api/providers.tf`).
 
 #### Scaleway
 

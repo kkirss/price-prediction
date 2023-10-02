@@ -11,7 +11,8 @@
     "infra-destroy": "cross-env SCW_PROFILE=price-prediction-prod AWS_PROFILE=scaleway-price-prediction-prod terraform destroy -auto-approve"
   },
   "dependencies": {
-    "@price-prediction/infra-backend-bucket": "workspace:*"
+    "@price-prediction/infra-backend-bucket": "workspace:*",
+    "@price-prediction/infra-remote-container": "workspace:*"
   },
   "devDependencies": {
     "cross-env": "^7.0.3"
