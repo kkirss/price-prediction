@@ -7,7 +7,8 @@
     "lint:fix": "terraform fmt -recursive",
     "infra-init": "cross-env SCW_PROFILE=price-prediction-prod AWS_PROFILE=scaleway-price-prediction-prod terraform init",
     "infra-plan": "cross-env SCW_PROFILE=price-prediction-prod AWS_PROFILE=scaleway-price-prediction-prod terraform plan",
-    "infra-deploy": "cross-env SCW_PROFILE=price-prediction-prod AWS_PROFILE=scaleway-price-prediction-prod terraform apply -auto-approve"
+    "infra-deploy": "cross-env SCW_PROFILE=price-prediction-prod AWS_PROFILE=scaleway-price-prediction-prod terraform apply -auto-approve",
+    "infra-destroy": "cross-env SCW_PROFILE=price-prediction-prod AWS_PROFILE=scaleway-price-prediction-prod terraform destroy -auto-approve"
   },
   "devDependencies": {
     "cross-env": "^7.0.3"

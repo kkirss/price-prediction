@@ -138,6 +138,13 @@ To deploy the backend to Scaleway:
 pnpm run deploy:backend
 ```
 
+### Destroy Infrastructure
+
+To destroy the infrastructure:
+```bash
+pnpm run infra-destroy
+```
+
 ## Architecture
 
 ### Monorepo

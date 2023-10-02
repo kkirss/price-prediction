@@ -16,7 +16,8 @@
     "deploy:backend": "turbo run --filter infra-api deploy:backend",
     "infra-init": "turbo run infra-init",
     "infra-plan": "turbo run infra-plan",
-    "infra-deploy": "turbo run infra-deploy"
+    "infra-deploy": "turbo run infra-deploy",
+    "infra-destroy": "turbo run infra-destroy"
   },
   "devDependencies": {
     "@price-prediction/tsconfig": "workspace:*",

@@ -8,7 +8,8 @@
     "container-registry-login": "scw --profile price-prediction-prod registry login program=docker region=nl-ams",
     "infra-init": "cross-env SCW_PROFILE=price-prediction-prod AWS_PROFILE=scaleway-price-prediction-prod terraform init",
     "infra-plan": "cross-env SCW_PROFILE=price-prediction-prod AWS_PROFILE=scaleway-price-prediction-prod terraform plan",
-    "infra-deploy": "cross-env SCW_PROFILE=price-prediction-prod AWS_PROFILE=scaleway-price-prediction-prod terraform apply -auto-approve"
+    "infra-deploy": "cross-env SCW_PROFILE=price-prediction-prod AWS_PROFILE=scaleway-price-prediction-prod terraform apply -auto-approve",
+    "infra-destroy": "cross-env SCW_PROFILE=price-prediction-prod AWS_PROFILE=scaleway-price-prediction-prod terraform destroy -auto-approve"
   },
   "dependencies": {
     "@price-prediction/infra-backend-bucket": "workspace:*"

@@ -65,6 +65,12 @@
       "inputs": ["**.tf", "**.tfvars", "package.json"],
       "outputs": [],
       "cache": false
+    },
+    "infra-destroy": {
+      "dependsOn": [],
+      "inputs": ["**.tf", "**.tfvars", "package.json"],
+      "outputs": [],
+      "cache": false
     }
   }
 }
