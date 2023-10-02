@@ -14,8 +14,10 @@ const getPort = (): number => {
 
 if (import.meta.env.PROD) {
   const port = getPort()
-  console.log(`Server listening on port ${port}`)
-  app.listen(port)
+  console.log(`Starting server on port ${port}`)
+  app.listen(port, () => {
+    console.log(`Server listening on port ${port}`)
+  })
 }
 
 export const server = app

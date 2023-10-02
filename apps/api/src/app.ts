@@ -6,4 +6,8 @@ const app = express()
 
 app.use('/', healthRouter)
 
+app.on('error', (err) => {
+  console.error(err)
+})
+
 export { app }
