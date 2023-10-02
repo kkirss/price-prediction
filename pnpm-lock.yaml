@@ -84,6 +84,16 @@ importers:
         specifier: ^7.0.3
         version: 7.0.3
 
+  apps/infra-container-namespace:
+    dependencies:
+      '@price-prediction/infra-backend-bucket':
+        specifier: workspace:*
+        version: link:../infra-backend-bucket
+    devDependencies:
+      cross-env:
+        specifier: ^7.0.3
+        version: 7.0.3
+
   apps/web:
     dependencies:
       '@price-prediction/coincap-api':

@@ -101,6 +101,7 @@ pnpm run deploy:web
 
 * [Docker](https://www.docker.com/products/docker-desktop)
 * [terraform](https://www.terraform.io/downloads.html)
+* [scaleway-cli](https://github.com/scaleway/scaleway-cli#installation)
 
 #### Scaleway
 
