@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "files": [
+    "dist",
+    "prisma",
+    "src"
+  ],
   "main": "dist/server.mjs",
   "module": "dist/server.mjs",
   "types": "src/server.ts",
@@ -16,9 +21,14 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "serve": "cross-env PORT=4000 node dist/server.mjs",
-    "serve-docker": "docker run -p 4000:4000 --env PORT=4000 --name price-prediction-api --rm price-prediction-api:latest"
+    "serve-docker": "docker run -p 4000:4000 --env PORT=4000 --name price-prediction-api --rm price-prediction-api:latest",
+    "lint-db-schema": "prisma format",
+    "generate-db-client": "prisma generate",
+    "validate-db-schema": "prisma validate",
+    "migrate-db-dev": "prisma migrate dev --skip-generate"
   },
   "dependencies": {
+    "@prisma/client": "5.3.1",
     "express": "^4.18.2"
   },
   "devDependencies": {
@@ -29,6 +39,7 @@
     "@types/node": "^20.7.2",
     "@types/supertest": "^2.0.13",
     "cross-env": "^7.0.3",
+    "prisma": "^5.3.1",
     "supertest": "^6.3.3",
     "ts-standard": "^12.0.2",
     "typescript": "^5.2.2",
@@ -41,6 +52,10 @@
     "fsevents": "^2.3.3"
   },
   "ts-standard": {
-    "ignore": ["dist", "dist-types"]
+    "ignore": [
+      "dist",
+      "dist-types",
+      "prisma"
+    ]
   }
 }

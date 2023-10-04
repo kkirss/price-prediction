@@ -10,9 +10,6 @@
       "path": "apps/web"
     },
     {
-      "path": "packages/api-database"
-    },
-    {
       "path": "packages/coincap-api"
     },
     {

@@ -2,6 +2,18 @@
   "$schema": "https://turbo.build/schema.json",
   "extends": ["//"],
   "pipeline": {
+    "build": {
+      "dependsOn": ["^build", "generate-db-client"]
+    },
+    "lint": {
+      "dependsOn": ["^check-types", "lint-db-schema"]
+    },
+    "lint:fix": {
+      "dependsOn": ["^check-types", "lint-db-schema"]
+    },
+    "check-types": {
+      "dependsOn": ["^check-types", "validate-db-schema", "generate-db-client"]
+    },
     "build-docker": {
       "dependsOn": ["build"],
       "inputs": ["Dockerfile", "dist/**"]
@@ -10,6 +22,20 @@
       "dependsOn": ["build-docker"],
       "cache": false,
       "persistent": true
+    },
+    "lint-db-schema": {
+      "inputs": ["prisma/schema.prisma"],
+      "outputs": ["prisma/schema.prisma"]
+    },
+    "generate-db-client": {
+      "inputs": ["prisma/schema.prisma"]
+    },
+    "validate-db-schema": {
+      "inputs": ["prisma/schema.prisma"]
+    },
+    "migrate-db-dev": {
+      "inputs": ["prisma/schema.prisma"],
+      "outputs": ["prisma/migrations/**"]
     }
   }
 }
