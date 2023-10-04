@@ -65,6 +65,75 @@
             }
           }
         }
+      },
+      "SignupRequest": {
+        "type": "object",
+        "required": [
+          "username",
+          "password"
+        ],
+        "properties": {
+          "username": {
+            "type": "string",
+            "example": "user"
+          },
+          "password": {
+            "type": "string",
+            "example": "password"
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "required": [
+          "userId",
+          "username"
+        ],
+        "properties": {
+          "userId": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          }
+        }
+      },
+      "Session": {
+        "type": "object",
+        "required": [
+          "activePeriodExpiresAt",
+          "idlePeriodExpiresAt",
+          "sessionId",
+          "user"
+        ],
+        "properties": {
+          "activePeriodExpiresAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "idlePeriodExpiresAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "sessionId": {
+            "type": "string"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "SignupRequest": {
+        "description": "Sign up request",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/SignupRequest"
+            }
+          }
+        }
       }
     },
     "responses": {
@@ -108,6 +177,16 @@
             }
           }
         }
+      },
+      "SignupSuccessfulResponse": {
+        "description": "Sign up successful",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Session"
+            }
+          }
+        }
       }
     }
   },
@@ -136,6 +215,26 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/HealthOKResponse"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestResponse"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerErrorResponse"
+          }
+        }
+      }
+    },
+    "/auth/signup": {
+      "post": {
+        "summary": "Sign up",
+        "operationId": "signup",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/SignupRequest"
+        },
+        "responses": {
+          "201": {
+            "$ref": "#/components/responses/SignupSuccessfulResponse"
           },
           "400": {
             "$ref": "#/components/responses/BadRequestResponse"

@@ -5,7 +5,7 @@
     "@price-prediction/tsconfig/vite.json"
   ],
   "include": [
-    "src/**/*.json",
+    "src/openAPI/*.json",
     "src/**/*.ts",
     "src/**/*.tsx",
     "vite.config.ts"
@@ -19,7 +19,12 @@
       ]
     },
     "emitDeclarationOnly": false,
-    "noEmit": true
+    "noEmit": true,
+    "types": [
+      "qs",
+      "vite/client",
+      "vitest"
+    ]
   },
   "references": [
     {

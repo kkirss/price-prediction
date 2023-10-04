@@ -29,9 +29,13 @@
     "migrate-db-dev": "prisma migrate dev --skip-generate"
   },
   "dependencies": {
+    "@lucia-auth/adapter-prisma": "^3.0.2",
     "@prisma/client": "5.3.1",
+    "@types/qs": "^6.9.8",
     "express": "^4.18.2",
-    "express-openapi-validator": "^5.0.6"
+    "express-async-handler": "^1.2.0",
+    "express-openapi-validator": "^5.0.6",
+    "lucia": "^2.7.1"
   },
   "devDependencies": {
     "@price-prediction/tsconfig": "workspace:*",
@@ -58,7 +62,8 @@
     "ignore": [
       "dist",
       "dist-types",
-      "prisma"
+      "prisma",
+      "src/**/*.d.ts"
     ]
   }
 }
