@@ -7,3 +7,12 @@ export type OpenAPIError = InstanceType<OpenAPIErrorClassType>
 export {
   HttpError
 }
+
+export const createValidatorError = (message: string, fieldPath?: string): HttpError =>
+  HttpError.create({
+    status: 400,
+    message,
+    path: fieldPath !== undefined
+      ? `/body/${fieldPath}`
+      : '/body'
+  })

@@ -1,7 +1,7 @@
 import { Prisma } from '@prisma/client'
 import asyncHandler from 'express-async-handler'
 
-import { HttpError } from '~/openAPI/error'
+import { createValidatorError } from '~/openAPI/error'
 import { createSession, createUser, getResponseSession } from '~/auth'
 
 export const signup = asyncHandler(async (req, res) => {
@@ -18,11 +18,7 @@ export const signup = asyncHandler(async (req, res) => {
       e instanceof Prisma.PrismaClientKnownRequestError &&
       e.code === 'P2002'
     ) {
-      throw HttpError.create({
-        status: 400,
-        message: 'Username already taken',
-        path: '/body/username'
-      })
+      throw createValidatorError('Username already taken', 'username')
     }
     throw e
   }
