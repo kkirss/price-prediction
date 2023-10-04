@@ -3,7 +3,7 @@ import request from 'supertest'
 
 import { app } from '~/app'
 
-describe('API /health', () => {
+describe('API health', () => {
   it('should return OK', async () => {
     const response = await request(app).get('/health')
 

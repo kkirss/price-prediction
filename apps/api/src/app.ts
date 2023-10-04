@@ -4,7 +4,7 @@ import path from 'path'
 import express, { Request, type Response } from 'express'
 import { middleware as openAPIMiddleware } from 'express-openapi-validator'
 
-import { healthRouter } from '~/health/routes'
+import { healthRouter } from '~/healthRoutes/routes'
 import { OpenAPIError } from '~/openAPI/error'
 import openAPISchema from '~/openAPI/schema.json'
 
@@ -26,7 +26,7 @@ app.use(
   })
 )
 
-app.use('/', healthRouter)
+app.use(healthRouter)
 
 app.use((err: OpenAPIError, _req: Request, res: Response, _next: any) => {
   console.error(err)
