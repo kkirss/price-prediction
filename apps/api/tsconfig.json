@@ -5,6 +5,7 @@
     "@price-prediction/tsconfig/vite.json"
   ],
   "include": [
+    "src/**/*.json",
     "src/**/*.ts",
     "src/**/*.tsx",
     "vite.config.ts"

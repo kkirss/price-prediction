@@ -1,0 +1,150 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Price Prediction API",
+    "version": "1.0",
+    "description": "",
+    "contact": {
+      "name": "kkirss",
+      "url": "https://github.com/kkirss"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/license/mit/"
+    }
+  },
+  "externalDocs": {
+    "url": "https://github.com/kkirss/price-prediction",
+    "description": "Price Prediction API GitHub repository"
+  },
+  "servers": [
+    {
+      "description": "Local",
+      "url": "http://localhost:4000"
+    }
+  ],
+  "security": [
+    {}
+  ],
+  "components": {
+    "schemas": {
+      "ValidationErrorItem": {
+        "type": "object",
+        "required": [
+          "message",
+          "path"
+        ],
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "errorCode": {
+            "type": "string"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "type": "string",
+            "example": [
+              "not found"
+            ]
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ValidationErrorItem"
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "NotFoundResponse": {
+        "description": "Not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "BadRequestResponse": {
+        "description": "Bad request",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "InternalServerErrorResponse": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "HealthOKResponse": {
+        "description": "Health OK",
+        "content": {
+          "text/plain": {
+            "schema": {
+              "type": "string",
+              "example": "OK"
+            }
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Root health check",
+        "operationId": "checkHealthRoot",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/HealthOKResponse"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestResponse"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerErrorResponse"
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "summary": "Health check",
+        "operationId": "checkHealth",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/HealthOKResponse"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestResponse"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerErrorResponse"
+          }
+        }
+      }
+    }
+  }
+}
