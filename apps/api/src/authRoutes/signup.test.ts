@@ -2,15 +2,7 @@ import { afterEach, beforeAll, describe, expect, it } from 'vitest'
 import request from 'supertest'
 
 import { app } from '~/app'
-import { dbClient } from '~/database'
-
-const deleteUser = async (username: string): Promise<void> => {
-  await dbClient.user.deleteMany({
-    where: {
-      username
-    }
-  })
-}
+import { deleteUserIfExists } from '~/auth'
 
 describe('API signup', () => {
   it('should return 400 error when no credentials are passed', async () => {
@@ -42,10 +34,10 @@ describe('API signup', () => {
 
 describe('API signup', () => {
   beforeAll(async () => {
-    await deleteUser('testuser')
+    await deleteUserIfExists('testuser')
   })
   afterEach(async () => {
-    await deleteUser('testuser')
+    await deleteUserIfExists('testuser')
   })
 
   it('should create a user', async () => {
