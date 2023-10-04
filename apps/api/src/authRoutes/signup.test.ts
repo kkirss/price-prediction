@@ -34,17 +34,17 @@ describe('API signup', () => {
 
 describe('API signup', () => {
   beforeAll(async () => {
-    await deleteUserIfExists('testuser')
+    await deleteUserIfExists('test_signup')
   })
   afterEach(async () => {
-    await deleteUserIfExists('testuser')
+    await deleteUserIfExists('test_signup')
   })
 
   it('should create a user', async () => {
     const response = await request(app)
       .post('/auth/signup')
       .send({
-        username: 'testuser',
+        username: 'test_signup',
         password: 'testpassword'
       })
 
@@ -65,7 +65,7 @@ describe('API signup', () => {
         "sessionId": Any<String>,
         "user": {
           "userId": Any<String>,
-          "username": "testuser",
+          "username": "test_signup",
         },
       }
     `)
@@ -74,7 +74,7 @@ describe('API signup', () => {
     const response = await request(app)
       .post('/auth/signup')
       .send({
-        username: 'testuser',
+        username: 'test_signup',
         password: 'testpassword'
       })
 
@@ -83,7 +83,7 @@ describe('API signup', () => {
     const response2 = await request(app)
       .post('/auth/signup')
       .send({
-        username: 'testuser',
+        username: 'test_signup',
         password: 'testpassword'
       })
 

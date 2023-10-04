@@ -16,3 +16,10 @@ export const createValidatorError = (message: string, fieldPath?: string): HttpE
       ? `/body/${fieldPath}`
       : '/body'
   })
+
+export const createUnauthorizedError = (message: string): HttpError =>
+  HttpError.create({
+    status: 401,
+    message,
+    path: '/body'
+  })

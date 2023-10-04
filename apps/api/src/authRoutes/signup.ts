@@ -9,7 +9,7 @@ export const signup = asyncHandler(async (req, res) => {
 
   try {
     const user = await createUser(username, password)
-    const session = await createSession(user)
+    const session = await createSession(user.userId)
     res
       .status(201)
       .json(getResponseSession(session))
