@@ -1,8 +1,8 @@
-import { Prisma } from '@prisma/client'
 import asyncHandler from 'express-async-handler'
 
-import { createValidatorError } from '~/openAPI/errors'
 import { createSession, createUser, getResponseSession } from '~/auth'
+import { isUniqueConstraintError } from '~/database'
+import { createValidatorError } from '~/openAPI/errors'
 
 export const signup = asyncHandler(async (req, res) => {
   const { username, password } = req.body
@@ -14,10 +14,7 @@ export const signup = asyncHandler(async (req, res) => {
       .status(201)
       .json(getResponseSession(session))
   } catch (e) {
-    if (
-      e instanceof Prisma.PrismaClientKnownRequestError &&
-      e.code === 'P2002'
-    ) {
+    if (isUniqueConstraintError(e)) {
       throw createValidatorError('Username already taken', 'username')
     }
     throw e
