@@ -6,7 +6,7 @@ import { middleware as openAPIMiddleware } from 'express-openapi-validator'
 
 import { authRouter } from '~/authRoutes/routes'
 import { healthRouter } from '~/healthRoutes/routes'
-import { OpenAPIError } from '~/openAPI/error'
+import { OpenAPIError } from '~/openAPI/errors'
 import openAPISchema from '~/openAPI/schema.json'
 
 const _dirname = typeof __dirname !== 'undefined'

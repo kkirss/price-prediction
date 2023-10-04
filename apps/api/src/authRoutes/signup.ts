@@ -1,7 +1,7 @@
 import { Prisma } from '@prisma/client'
 import asyncHandler from 'express-async-handler'
 
-import { createValidatorError } from '~/openAPI/error'
+import { createValidatorError } from '~/openAPI/errors'
 import { createSession, createUser, getResponseSession } from '~/auth'
 
 export const signup = asyncHandler(async (req, res) => {
