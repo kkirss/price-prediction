@@ -123,6 +123,18 @@ importers:
 
   apps/web:
     dependencies:
+      '@felte/common':
+        specifier: ^1.1.8
+        version: 1.1.8
+      '@felte/solid':
+        specifier: ^1.2.11
+        version: 1.2.11(solid-js@1.7.12)
+      '@felte/validator-zod':
+        specifier: ^1.0.17
+        version: 1.0.17(zod@3.22.4)
+      '@price-prediction/auth-ui':
+        specifier: workspace:*
+        version: link:../../packages/auth-ui
       '@price-prediction/coincap-api':
         specifier: workspace:*
         version: link:../../packages/coincap-api
@@ -156,6 +168,9 @@ importers:
       solid-services:
         specifier: ^4.3.2
         version: 4.3.2(solid-js@1.7.12)
+      zod:
+        specifier: ^3.22.4
+        version: 3.22.4
     devDependencies:
       '@price-prediction/tsconfig':
         specifier: workspace:*

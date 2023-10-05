@@ -24,6 +24,9 @@
   },
   "references": [
     {
+      "path": "../../packages/auth-ui"
+    },
+    {
       "path": "../../packages/coincap-api"
     },
     {

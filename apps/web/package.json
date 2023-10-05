@@ -16,6 +16,10 @@
     "deploy:gh-pages": "gh-pages --dist dist --dotfiles"
   },
   "dependencies": {
+    "@felte/common": "^1.1.8",
+    "@felte/solid": "^1.2.11",
+    "@felte/validator-zod": "^1.0.17",
+    "@price-prediction/auth-ui": "workspace:*",
     "@price-prediction/coincap-api": "workspace:*",
     "@price-prediction/financial-assets-ui": "workspace:*",
     "@price-prediction/ui-theme": "workspace:*",
@@ -26,7 +30,8 @@
     "@tanstack/solid-query": "^4.35.3",
     "openapi-fetch": "^0.7.6",
     "solid-js": "^1.7.11",
-    "solid-services": "^4.3.2"
+    "solid-services": "^4.3.2",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@price-prediction/tsconfig": "workspace:*",
