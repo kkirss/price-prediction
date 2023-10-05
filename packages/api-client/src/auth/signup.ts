@@ -1,7 +1,7 @@
 import { useService } from 'solid-services'
 import { createMutation, CreateMutationOptions } from '@tanstack/solid-query'
 
-import { Session, SIGNUP_PATH, SignupRequest } from '@price-prediction/api-schema'
+import { APIErrorObject, Session, SIGNUP_PATH, SignupRequest } from '@price-prediction/api-schema'
 
 import { APIClientService } from '~/services/client'
 
@@ -12,7 +12,7 @@ export const useSignup = (options?: CreateMutationOptions<Session, unknown, Sign
     mutationFn: async (inputData: SignupRequest) => {
       const { data, error } = await client().POST(SIGNUP_PATH, { body: inputData })
       if (error !== undefined) {
-        throw new Error(error.error)
+        throw new APIErrorObject(error)
       }
       return data
     },
