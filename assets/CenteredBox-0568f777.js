@@ -1,0 +1,1 @@
+import{y as r}from"./@suid/material-5587fef1.js";import{d as t}from"./solid-js-b9f6b6bd.js";const i=e=>t(r,{get sx(){return{mt:e.removeTopMargin??!1?0:4,display:"flex",flexDirection:"column",alignItems:"center",...e.sx}},get children(){return e.children}});export{i as C};
