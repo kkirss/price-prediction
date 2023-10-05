@@ -9,6 +9,9 @@
       "cache": true,
       "persistent": false
     },
+    "serve": {
+      "persistent": false
+    },
     "dev-wait-build": {
       "dependsOn": ["build"],
       "cache": true,

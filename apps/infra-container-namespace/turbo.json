@@ -5,6 +5,9 @@
     "dev": {
       "persistent": false
     },
+    "serve": {
+      "persistent": false
+    },
     "lint": {
       "inputs": ["**.tf", "**.tfvars", "package.json"],
       "outputs": ["**.tf"]
