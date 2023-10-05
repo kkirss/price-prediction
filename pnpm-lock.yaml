@@ -220,9 +220,18 @@ importers:
 
   packages/api-client:
     dependencies:
+      '@tanstack/solid-query':
+        specifier: 4.35.3
+        version: 4.35.3(solid-js@1.7.12)
       openapi-fetch:
         specifier: ^0.7.6
         version: 0.7.8
+      solid-js:
+        specifier: ^1.7.11
+        version: 1.7.12
+      solid-services:
+        specifier: ^4.3.2
+        version: 4.3.2(solid-js@1.7.12)
     devDependencies:
       '@price-prediction/api-schema':
         specifier: workspace:*
