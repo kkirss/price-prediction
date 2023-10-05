@@ -1,5 +1,5 @@
-import { type Component } from 'solid-js'
-import { Box, Button, TextField } from '@suid/material'
+import { type Component, Show } from 'solid-js'
+import { Box, Button, CircularProgress, TextField } from '@suid/material'
 import { type SxProps } from '@suid/system'
 import { createForm } from '@felte/solid'
 import { validator } from '@felte/validator-zod'
@@ -13,11 +13,14 @@ export const SignupForm: Component<{
   disabled?: boolean
   sx?: SxProps
 }> = (props) => {
-  const { form, isValid, errors } = createForm<SignupData>({
+  const { form, isValid, errors, isSubmitting } = createForm<SignupData>({
     onSubmit: props.onSubmit,
     extend: validator<SignupData>({ schema: signupSchema })
   })
-  const submitDisabled = (): boolean => (props.disabled ?? false) || !isValid()
+  const submitDisabled = (): boolean =>
+    (props.disabled ?? false) ||
+    !isValid() ||
+    isSubmitting()
   return (
     <Box
       component='form'
@@ -47,6 +50,9 @@ export const SignupForm: Component<{
         disabled={submitDisabled()}
       >
         Sign up
+        <Show when={isSubmitting()}>
+          <CircularProgress size='1.5em' sx={{ position: 'absolute' }} />
+        </Show>
       </Button>
     </Box>
   )
