@@ -18,13 +18,13 @@
     "lint": "ts-standard",
     "lint:fix": "ts-standard --fix",
     "check-types": "tsc",
-    "update-schema": "openapi-typescript node_modules/@price-prediction/api-openapi/dist/schema.json --output src/openAPI/schema.ts"
+    "update-schema": "openapi-typescript node_modules/@price-prediction/api-schema/dist/schema.json --output src/openAPI/schema.ts"
   },
   "peerDependencies": {
     "openapi-fetch": "^0.7.6"
   },
   "devDependencies": {
-    "@price-prediction/api-openapi": "workspace:*",
+    "@price-prediction/api-schema": "workspace:*",
     "@price-prediction/tsconfig": "workspace:*",
     "@price-prediction/vite-config": "workspace:*",
     "openapi-typescript": "^6.7.0",

@@ -20,7 +20,7 @@
   },
   "references": [
     {
-      "path": "../api-openapi"
+      "path": "../api-schema"
     },
     {
       "path": "../tsconfig"

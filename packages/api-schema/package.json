@@ -1,5 +1,5 @@
 {
-  "name": "@price-prediction/api-openapi",
+  "name": "@price-prediction/api-schema",
   "version": "1.0.0",
   "private": true,
   "type": "module",

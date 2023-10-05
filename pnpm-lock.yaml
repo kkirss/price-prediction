@@ -43,9 +43,9 @@ importers:
         specifier: ^2.3.3
         version: 2.3.3
     devDependencies:
-      '@price-prediction/api-openapi':
+      '@price-prediction/api-schema':
         specifier: workspace:*
-        version: link:../../packages/api-openapi
+        version: link:../../packages/api-schema
       '@price-prediction/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
@@ -224,9 +224,9 @@ importers:
         specifier: ^0.7.6
         version: 0.7.8
     devDependencies:
-      '@price-prediction/api-openapi':
+      '@price-prediction/api-schema':
         specifier: workspace:*
-        version: link:../api-openapi
+        version: link:../api-schema
       '@price-prediction/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -261,7 +261,7 @@ importers:
         specifier: ^7.0.1
         version: 7.0.1
 
-  packages/api-openapi:
+  packages/api-schema:
     devDependencies:
       '@redocly/cli':
         specifier: ^1.2.0

@@ -27,7 +27,7 @@
   },
   "references": [
     {
-      "path": "../../packages/api-openapi"
+      "path": "../../packages/api-schema"
     },
     {
       "path": "../../packages/tsconfig"

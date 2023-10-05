@@ -4,7 +4,7 @@ import path from 'path'
 import express, { Request, type Response } from 'express'
 import { middleware as openAPIMiddleware } from 'express-openapi-validator'
 
-import openAPISchema from '@price-prediction/api-openapi'
+import openAPISchema from '@price-prediction/api-schema'
 
 import { authRouter } from '~/authRoutes/routes'
 import { healthRouter } from '~/healthRoutes/routes'
