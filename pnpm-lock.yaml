@@ -233,6 +233,42 @@ importers:
       '@price-prediction/vite-config':
         specifier: workspace:*
         version: link:../vite-config
+      rimraf:
+        specifier: ^5.0.1
+        version: 5.0.5
+      ts-standard:
+        specifier: ^12.0.2
+        version: 12.0.2(typescript@5.2.2)
+      typescript:
+        specifier: ^5.2.2
+        version: 5.2.2
+      vite:
+        specifier: ^4.4.11
+        version: 4.4.11(@types/node@20.8.2)
+      vite-plugin-externalize-deps:
+        specifier: ^0.7.0
+        version: 0.7.0(vite@4.4.11)
+      vite-tsconfig-paths:
+        specifier: ^4.2.1
+        version: 4.2.1(typescript@5.2.2)(vite@4.4.11)
+      vitest:
+        specifier: ^0.34.4
+        version: 0.34.6(jsdom@22.1.0)
+      wait-on:
+        specifier: ^7.0.1
+        version: 7.0.1
+
+  packages/api-schema:
+    devDependencies:
+      '@price-prediction/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+      '@price-prediction/vite-config':
+        specifier: workspace:*
+        version: link:../vite-config
+      '@redocly/cli':
+        specifier: ^1.2.0
+        version: 1.2.0
       openapi-typescript:
         specifier: ^6.7.0
         version: 6.7.0
@@ -261,21 +297,6 @@ importers:
         specifier: ^7.0.1
         version: 7.0.1
 
-  packages/api-schema:
-    devDependencies:
-      '@redocly/cli':
-        specifier: ^1.2.0
-        version: 1.2.0
-      rimraf:
-        specifier: ^5.0.1
-        version: 5.0.5
-      typescript:
-        specifier: ^5.2.2
-        version: 5.2.2
-      wait-on:
-        specifier: ^7.0.1
-        version: 7.0.1
-
   packages/auth-ui:
     dependencies:
       '@felte/common':
@@ -300,9 +321,9 @@ importers:
         specifier: ^3.22.4
         version: 3.22.4
     devDependencies:
-      '@price-prediction/api-client':
+      '@price-prediction/api-schema':
         specifier: workspace:*
-        version: link:../api-client
+        version: link:../api-schema
       '@price-prediction/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig

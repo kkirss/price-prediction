@@ -2,18 +2,29 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": [
     "@price-prediction/tsconfig/base.json",
+    "@price-prediction/tsconfig/vite.json"
   ],
   "include": [
-    "schema.json"
+    "src/openAPI/*.json",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "vite.config.ts"
   ],
   "compilerOptions": {
     "baseUrl": ".",
-    "outDir": "dist",
-    "emitDeclarationOnly": false
+    "outDir": "dist-types",
+    "paths": {
+      "~/*": [
+        "src/*"
+      ]
+    }
   },
   "references": [
     {
       "path": "../tsconfig"
+    },
+    {
+      "path": "../vite-config"
     }
   ]
 }

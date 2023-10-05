@@ -31,7 +31,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@price-prediction/api-client": "workspace:*",
+    "@price-prediction/api-schema": "workspace:*",
     "@price-prediction/tsconfig": "workspace:*",
     "@price-prediction/vite-config": "workspace:*",
     "@solidjs/testing-library": "^0.8.4",

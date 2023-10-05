@@ -1,7 +1,6 @@
 import createClient from 'openapi-fetch'
 
-import { paths } from '~/openAPI/schema'
-import { API_BASE_URL } from '~/openAPI/schemaInfo'
+import { API_BASE_URL, paths } from '@price-prediction/api-schema'
 
 export type ClientOptions = Parameters<typeof createClient<paths>>[0]
 export type CoinCapClient = ReturnType<typeof createClient<paths>>

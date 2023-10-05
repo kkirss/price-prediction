@@ -3,15 +3,24 @@
   "extends": ["//"],
   "pipeline": {
     "build": {
-      "inputs": ["package.json", "tsconfig.json", "schema.json"]
+      "dependsOn": ["^build", "update-schema"]
+    },
+    "dev": {
+      "dependsOn": ["dev-clean-build", "^dev-wait-build", "update-schema"]
     },
     "lint": {
-      "inputs": ["schema.json"],
-      "outputs": []
+      "dependsOn": ["^check-types", "lint-schema"]
     },
     "lint:fix": {
-      "inputs": ["schema.json"],
+      "dependsOn": ["^check-types", "lint-schema"]
+    },
+    "lint-schema": {
+      "inputs": ["src/openAPI/schema.json"],
       "outputs": []
+    },
+    "update-schema": {
+      "inputs": ["src/openAPI/schema.json"],
+      "outputs": ["src/openAPI/schema.ts"]
     }
   }
 }

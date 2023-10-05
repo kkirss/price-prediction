@@ -4,23 +4,42 @@
   "private": true,
   "type": "module",
   "files": [
-    "schema.json"
+    "dist",
+    "src"
   ],
-  "main": "dist/schema.json",
-  "module": "dist/schema.json",
-  "types": "schema.json",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "src/index.ts",
   "scripts": {
-    "dev": "tsc --watch",
+    "dev": "vite build --watch",
     "dev-clean-build": "rimraf dist",
-    "dev-wait-build": "wait-on dist/schema.json",
-    "build": "tsc",
-    "lint": "redocly lint schema.json",
-    "lint:fix": "redocly lint schema.json"
+    "dev-wait-build": "wait-on dist/index.js",
+    "build": "vite build",
+    "lint": "ts-standard",
+    "lint:fix": "ts-standard --fix",
+    "check-types": "tsc",
+    "lint-schema": "redocly lint src/openAPI/schema.json",
+    "update-schema": "openapi-typescript src/openAPI/schema.json --output src/openAPI/schema.ts"
   },
   "devDependencies": {
+    "@price-prediction/tsconfig": "workspace:*",
+    "@price-prediction/vite-config": "workspace:*",
     "@redocly/cli": "^1.2.0",
+    "openapi-typescript": "^6.7.0",
     "rimraf": "^5.0.1",
+    "ts-standard": "^12.0.2",
     "typescript": "^5.2.2",
+    "vite": "^4.4.11",
+    "vite-plugin-externalize-deps": "^0.7.0",
+    "vite-tsconfig-paths": "^4.2.1",
+    "vitest": "^0.34.4",
     "wait-on": "^7.0.1"
+  },
+  "ts-standard": {
+    "ignore": [
+      "dist",
+      "dist-types",
+      "src/openAPI/schema.ts"
+    ]
   }
 }
