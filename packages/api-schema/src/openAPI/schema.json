@@ -80,6 +80,7 @@
           },
           "password": {
             "type": "string",
+            "minLength": 8,
             "example": "password"
           }
         }

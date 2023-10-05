@@ -53,6 +53,29 @@ describe('API signup', () => {
       }
     `)
   })
+  it('should return 400 error when password is shorter than 8 characters', async () => {
+    const response = await request(app)
+      .post('/auth/signup')
+      .send({
+        username: 'test_signup',
+        password: '1234567'
+      })
+
+    expect(response.status).toBe(400)
+    const responseData = JSON.parse(response.text)
+    expect(responseData).toMatchInlineSnapshot(`
+      {
+        "error": "request/body/password must NOT have fewer than 8 characters",
+        "errors": [
+          {
+            "errorCode": "minLength.openapi.validation",
+            "message": "must NOT have fewer than 8 characters",
+            "path": "/body/password",
+          },
+        ],
+      }
+    `)
+  })
 })
 
 describe('API signup', () => {
