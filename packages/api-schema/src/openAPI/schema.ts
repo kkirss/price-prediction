@@ -32,7 +32,7 @@ export interface components {
       path: string;
       errorCode?: string;
     };
-    Error: {
+    APIError: {
       /**
        * @example [
        *   "not found"
@@ -70,25 +70,25 @@ export interface components {
     /** @description Not found */
     NotFoundResponse: {
       content: {
-        "application/json": components["schemas"]["Error"];
+        "application/json": components["schemas"]["APIError"];
       };
     };
     /** @description Bad request */
     BadRequestResponse: {
       content: {
-        "application/json": components["schemas"]["Error"];
+        "application/json": components["schemas"]["APIError"];
       };
     };
     /** @description Unauthorized */
     UnauthorizedResponse: {
       content: {
-        "application/json": components["schemas"]["Error"];
+        "application/json": components["schemas"]["APIError"];
       };
     };
     /** @description Internal server error */
     InternalServerErrorResponse: {
       content: {
-        "application/json": components["schemas"]["Error"];
+        "application/json": components["schemas"]["APIError"];
       };
     };
     /** @description Health OK */

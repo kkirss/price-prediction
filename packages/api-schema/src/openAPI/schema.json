@@ -46,7 +46,7 @@
           }
         }
       },
-      "Error": {
+      "APIError": {
         "type": "object",
         "required": [
           "error"
@@ -169,7 +169,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/Error"
+              "$ref": "#/components/schemas/APIError"
             }
           }
         }
@@ -179,7 +179,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/Error"
+              "$ref": "#/components/schemas/APIError"
             }
           }
         }
@@ -189,7 +189,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/Error"
+              "$ref": "#/components/schemas/APIError"
             }
           }
         }
@@ -199,7 +199,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/Error"
+              "$ref": "#/components/schemas/APIError"
             }
           }
         }

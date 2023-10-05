@@ -4,7 +4,7 @@ import path from 'path'
 import express, { Request, type Response } from 'express'
 import { middleware as openAPIMiddleware } from 'express-openapi-validator'
 
-import { openAPISchema } from '@price-prediction/api-schema'
+import { type APIError, openAPISchema } from '@price-prediction/api-schema'
 
 import { authRouter } from '~/authRoutes/routes'
 import { healthRouter } from '~/healthRoutes/routes'
@@ -38,10 +38,11 @@ app.use((err: OpenAPIError, _req: Request, res: Response, _next: any) => {
       error: 'Internal Server Error'
     })
   }
-  res.status(err.status).json({
+  const errorResponse: APIError = {
     error: err.message,
     errors: err.errors
-  })
+  }
+  res.status(err.status).json(errorResponse)
 })
 
 export { app }
