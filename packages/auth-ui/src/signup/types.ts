@@ -1,8 +1,6 @@
 import { SubmitContext } from '@felte/common'
 
-export interface SignupData extends Record<string, unknown> {
-  username: string
-  password: string
-}
+import { type SignupRequest } from '@price-prediction/api-client'
 
+export type SignupData = SignupRequest
 export type SignUpOnSubmit = (values: SignupData, context: SubmitContext<SignupData>) => Promise<unknown> | unknown

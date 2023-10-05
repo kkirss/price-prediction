@@ -300,6 +300,9 @@ importers:
         specifier: ^3.22.4
         version: 3.22.4
     devDependencies:
+      '@price-prediction/api-client':
+        specifier: workspace:*
+        version: link:../api-client
       '@price-prediction/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
