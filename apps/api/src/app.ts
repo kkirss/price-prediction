@@ -1,6 +1,7 @@
 import { dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import path from 'path'
+import cors from 'cors'
 import express, { Request, type Response } from 'express'
 import { middleware as openAPIMiddleware } from 'express-openapi-validator'
 
@@ -18,6 +19,9 @@ const openAPISchemaPath = path.join(_dirname, 'openAPI/schema.json')
 const app = express()
 
 app.use(express.json())
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production' ? process.env.CORS_ORIGIN : '*'
+}))
 
 app.use('/openapi.json', express.static(openAPISchemaPath))
 app.use(
