@@ -5,7 +5,6 @@
     "@price-prediction/tsconfig/vite.json"
   ],
   "include": [
-    "src/openAPI/*.json",
     "src/**/*.ts",
     "src/**/*.tsx",
     "vite.config.ts"
@@ -27,6 +26,9 @@
     ]
   },
   "references": [
+    {
+      "path": "../../packages/api-openapi"
+    },
     {
       "path": "../../packages/tsconfig"
     },

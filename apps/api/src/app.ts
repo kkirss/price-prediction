@@ -4,10 +4,11 @@ import path from 'path'
 import express, { Request, type Response } from 'express'
 import { middleware as openAPIMiddleware } from 'express-openapi-validator'
 
+import openAPISchema from '@price-prediction/api-openapi'
+
 import { authRouter } from '~/authRoutes/routes'
 import { healthRouter } from '~/healthRoutes/routes'
 import { OpenAPIError } from '~/openAPI/errors'
-import openAPISchema from '~/openAPI/schema.json'
 
 const _dirname = typeof __dirname !== 'undefined'
   ? __dirname

@@ -22,7 +22,6 @@
     "test:watch": "vitest",
     "serve": "cross-env PORT=4000 node dist/server.mjs",
     "serve-docker": "docker run -p 4000:4000 --env PORT=4000 --name price-prediction-api --rm price-prediction-api:latest",
-    "lint-openapi-schema": "redocly lint src/openAPI/schema.json",
     "lint-db-schema": "prisma format",
     "generate-db-client": "prisma generate",
     "validate-db-schema": "prisma validate",
@@ -38,9 +37,9 @@
     "lucia": "^2.7.1"
   },
   "devDependencies": {
+    "@price-prediction/api-openapi": "workspace:*",
     "@price-prediction/tsconfig": "workspace:*",
     "@price-prediction/vite-config": "workspace:*",
-    "@redocly/cli": "^1.2.0",
     "@types/express": "^4.17.18",
     "@types/express-serve-static-core": "^4.17.37",
     "@types/node": "^20.8.2",

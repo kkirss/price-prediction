@@ -1,0 +1,17 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "extends": ["//"],
+  "pipeline": {
+    "build": {
+      "inputs": ["package.json", "tsconfig.json", "schema.json"]
+    },
+    "lint": {
+      "inputs": ["schema.json"],
+      "outputs": []
+    },
+    "lint:fix": {
+      "inputs": ["schema.json"],
+      "outputs": []
+    }
+  }
+}

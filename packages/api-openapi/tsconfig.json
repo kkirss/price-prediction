@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": [
+    "@price-prediction/tsconfig/base.json",
+  ],
+  "include": [
+    "schema.json"
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "dist",
+    "emitDeclarationOnly": false
+  },
+  "references": [
+    {
+      "path": "../tsconfig"
+    }
+  ]
+}

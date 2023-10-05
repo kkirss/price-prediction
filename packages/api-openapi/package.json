@@ -1,0 +1,26 @@
+{
+  "name": "@price-prediction/api-openapi",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "files": [
+    "schema.json"
+  ],
+  "main": "dist/schema.json",
+  "module": "dist/schema.json",
+  "types": "schema.json",
+  "scripts": {
+    "dev": "tsc --watch",
+    "dev-clean-build": "rimraf dist",
+    "dev-wait-build": "wait-on dist/schema.json",
+    "build": "tsc",
+    "lint": "redocly lint schema.json",
+    "lint:fix": "redocly lint schema.json"
+  },
+  "devDependencies": {
+    "@redocly/cli": "^1.2.0",
+    "rimraf": "^5.0.1",
+    "typescript": "^5.2.2",
+    "wait-on": "^7.0.1"
+  }
+}

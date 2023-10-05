@@ -6,10 +6,10 @@
       "dependsOn": ["^build", "generate-db-client"]
     },
     "lint": {
-      "dependsOn": ["^check-types", "lint-openapi-schema", "lint-db-schema"]
+      "dependsOn": ["^check-types", "lint-db-schema"]
     },
     "lint:fix": {
-      "dependsOn": ["^check-types", "lint-openapi-schema", "lint-db-schema"]
+      "dependsOn": ["^check-types", "lint-db-schema"]
     },
     "check-types": {
       "dependsOn": ["^check-types", "validate-db-schema", "generate-db-client"]
@@ -22,10 +22,6 @@
       "dependsOn": ["build-docker"],
       "cache": false,
       "persistent": true
-    },
-    "lint-openapi-schema": {
-      "inputs": ["src/openAPI/schema.json"],
-      "outputs": []
     },
     "lint-db-schema": {
       "inputs": ["prisma/schema.prisma"],

@@ -43,15 +43,15 @@ importers:
         specifier: ^2.3.3
         version: 2.3.3
     devDependencies:
+      '@price-prediction/api-openapi':
+        specifier: workspace:*
+        version: link:../../packages/api-openapi
       '@price-prediction/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
       '@price-prediction/vite-config':
         specifier: workspace:*
         version: link:../../packages/vite-config
-      '@redocly/cli':
-        specifier: ^1.2.0
-        version: 1.2.0
       '@types/express':
         specifier: ^4.17.18
         version: 4.17.18
@@ -217,6 +217,21 @@ importers:
       vitest:
         specifier: ^0.34.4
         version: 0.34.6(jsdom@22.1.0)
+
+  packages/api-openapi:
+    devDependencies:
+      '@redocly/cli':
+        specifier: ^1.2.0
+        version: 1.2.0
+      rimraf:
+        specifier: ^5.0.1
+        version: 5.0.5
+      typescript:
+        specifier: ^5.2.2
+        version: 5.2.2
+      wait-on:
+        specifier: ^7.0.1
+        version: 7.0.1
 
   packages/auth-ui:
     dependencies:
