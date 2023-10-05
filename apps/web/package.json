@@ -19,6 +19,8 @@
     "@felte/common": "^1.1.8",
     "@felte/solid": "^1.2.11",
     "@felte/validator-zod": "^1.0.17",
+    "@price-prediction/api-client": "workspace:*",
+    "@price-prediction/api-schema": "workspace:*",
     "@price-prediction/auth-ui": "workspace:*",
     "@price-prediction/coincap-api": "workspace:*",
     "@price-prediction/financial-assets-ui": "workspace:*",

@@ -132,6 +132,12 @@ importers:
       '@felte/validator-zod':
         specifier: ^1.0.17
         version: 1.0.17(zod@3.22.4)
+      '@price-prediction/api-client':
+        specifier: workspace:*
+        version: link:../../packages/api-client
+      '@price-prediction/api-schema':
+        specifier: workspace:*
+        version: link:../../packages/api-schema
       '@price-prediction/auth-ui':
         specifier: workspace:*
         version: link:../../packages/auth-ui

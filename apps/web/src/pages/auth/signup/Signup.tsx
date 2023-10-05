@@ -1,14 +1,20 @@
 import { type Component } from 'solid-js'
 import { Typography } from '@suid/material'
 
+import { useSignup } from '@price-prediction/api-client'
+import { SignupRequest } from '@price-prediction/api-schema'
 import { SignupForm } from '@price-prediction/auth-ui'
 
 import { CenteredBox } from '~/layout/CenteredBox'
 
 const Signup: Component = () => {
-  const onSubmit: (data: any) => Promise<void> = async (data: any) => {
-    console.log('data', data)
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+  const signup = useSignup({
+    onSuccess: (data) => {
+      alert(`Successfully signed up as ${data.user.username}`)
+    }
+  })
+  const onSubmit = async (data: SignupRequest): Promise<void> => {
+    await signup.mutateAsync(data)
   }
   return (
     <CenteredBox>
