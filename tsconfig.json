@@ -10,6 +10,9 @@
       "path": "apps/web"
     },
     {
+      "path": "packages/auth-ui"
+    },
+    {
       "path": "packages/coincap-api"
     },
     {
