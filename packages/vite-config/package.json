@@ -23,7 +23,7 @@
     "deepmerge-ts": "^5.1.0"
   },
   "peerDependencies": {
-    "vite": "^4.4.9",
+    "vite": "^4.4.11",
     "vite-tsconfig-paths": "^4.2.1"
   },
   "optionalDependencies": {
@@ -37,12 +37,15 @@
     "rimraf": "^5.0.1",
     "ts-standard": "^12.0.2",
     "typescript": "^5.2.2",
-    "vite": "^4.4.9",
-    "vite-tsconfig-paths": "^4.2.1",
+    "vite": "^4.4.11",
     "vite-plugin-externalize-deps": "^0.7.0",
+    "vite-tsconfig-paths": "^4.2.1",
     "wait-on": "^7.0.1"
   },
   "ts-standard": {
-    "ignore": ["dist", "dist-types"]
+    "ignore": [
+      "dist",
+      "dist-types"
+    ]
   }
 }
