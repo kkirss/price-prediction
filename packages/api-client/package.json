@@ -20,13 +20,13 @@
     "check-types": "tsc"
   },
   "peerDependencies": {
+    "@price-prediction/api-schema": "workspace:*",
     "@tanstack/solid-query": "4.35.3",
     "openapi-fetch": "^0.7.6",
     "solid-js": "^1.7.11",
     "solid-services": "^4.3.2"
   },
   "devDependencies": {
-    "@price-prediction/api-schema": "workspace:*",
     "@price-prediction/tsconfig": "workspace:*",
     "@price-prediction/vite-config": "workspace:*",
     "rimraf": "^5.0.1",
