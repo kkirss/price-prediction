@@ -30,6 +30,29 @@ describe('API signup', () => {
       }
     `)
   })
+  it('should return 400 error when username is empty', async () => {
+    const response = await request(app)
+      .post('/auth/signup')
+      .send({
+        username: '',
+        password: 'testpassword'
+      })
+
+    expect(response.status).toBe(400)
+    const responseData = JSON.parse(response.text)
+    expect(responseData).toMatchInlineSnapshot(`
+      {
+        "error": "request/body/username must NOT have fewer than 1 characters",
+        "errors": [
+          {
+            "errorCode": "minLength.openapi.validation",
+            "message": "must NOT have fewer than 1 characters",
+            "path": "/body/username",
+          },
+        ],
+      }
+    `)
+  })
 })
 
 describe('API signup', () => {
