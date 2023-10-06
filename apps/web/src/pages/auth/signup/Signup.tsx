@@ -2,9 +2,10 @@ import { type Component } from 'solid-js'
 import { Typography } from '@suid/material'
 
 import { useSignup } from '@price-prediction/api-client'
-import { SignupRequest } from '@price-prediction/api-schema'
+import { type SignupRequest } from '@price-prediction/api-schema'
 import { SignupForm } from '@price-prediction/auth-ui'
 
+import { mapAPIErrorToFormError } from '~/errors/mapAPIErrorToFormError'
 import { CenteredBox } from '~/layout/CenteredBox'
 
 const Signup: Component = () => {
@@ -22,6 +23,7 @@ const Signup: Component = () => {
         Sign up
       </Typography>
       <SignupForm
+        onError={mapAPIErrorToFormError<SignupRequest>}
         onSubmit={onSubmit}
         sx={{
           display: 'flex',

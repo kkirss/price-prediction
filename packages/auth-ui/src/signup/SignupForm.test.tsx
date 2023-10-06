@@ -12,11 +12,13 @@ describe('SignupForm', () => {
     vi.clearAllMocks()
   })
 
+  const onError = vi.fn()
   const onSubmit = vi.fn()
 
   it('renders fields', async () => {
     const { getByLabelText } = render(() =>
       <SignupForm
+        onError={onError}
         onSubmit={onSubmit}
       />
     )
@@ -29,6 +31,7 @@ describe('SignupForm', () => {
   it('cannot submit with empty fields', async () => {
     const { getByRole } = render(() =>
       <SignupForm
+        onError={onError}
         onSubmit={onSubmit}
       />
     )
@@ -46,6 +49,7 @@ describe('SignupForm', () => {
     const password = 'testpassword'
     const { getByLabelText, getByRole } = render(() =>
       <SignupForm
+        onError={onError}
         onSubmit={onSubmit}
       />
     )

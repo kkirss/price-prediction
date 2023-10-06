@@ -5,16 +5,17 @@ import { createForm } from '@felte/solid'
 import { validator } from '@felte/validator-zod'
 
 import { signupSchema } from './schema'
-import { type SignupData, type SignUpOnSubmit } from './types'
+import type { SignupData, SignUpOnError, SignUpOnSubmit } from './types'
 
-// TODO: Add error response handling
 export const SignupForm: Component<{
+  onError: SignUpOnError
   onSubmit: SignUpOnSubmit
   disabled?: boolean
   sx?: SxProps
 }> = (props) => {
   const { form, isValid, errors, isSubmitting } = createForm<SignupData>({
     onSubmit: props.onSubmit,
+    onError: props.onError,
     extend: validator<SignupData>({ schema: signupSchema })
   })
   const submitDisabled = (): boolean =>
@@ -31,7 +32,7 @@ export const SignupForm: Component<{
         label='Username'
         name='username'
         disabled={props.disabled ?? false}
-        error={(() => errors().username !== null)()}
+        error={(() => Boolean(errors().username))()}
         helperText={(() => errors().username?.[0])()}
       />
       <TextField
@@ -39,7 +40,7 @@ export const SignupForm: Component<{
         name='password'
         type='password'
         disabled={props.disabled ?? false}
-        error={(() => errors().password !== null)()}
+        error={(() => Boolean(errors().password))()}
         helperText={(() => errors().password?.[0])()}
       />
       <Button
