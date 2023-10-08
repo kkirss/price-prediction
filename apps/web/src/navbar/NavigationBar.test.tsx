@@ -26,11 +26,11 @@ describe('NavigationBar', () => {
     )
     expect(getByText('Price Prediction')).toBeInTheDocument()
   })
-  it('should render sign up button', () => {
+  it('should render log in button', () => {
     const { getByText } = render(() =>
       <TestNavigationBar />
     )
-    expect(getByText('Sign up')).toBeInTheDocument()
+    expect(getByText('Log in')).toBeInTheDocument()
   })
   it('should render dark mode toggle button', () => {
     const { getByText } = render(() =>

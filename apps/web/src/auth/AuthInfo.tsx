@@ -3,7 +3,7 @@ import { A } from '@solidjs/router'
 import { useService } from 'solid-services'
 import { Button, Typography } from '@suid/material'
 
-import { SIGNUP_PATH } from '~/pages/auth/paths'
+import { LOGIN_PATH } from '~/pages/auth/paths'
 
 import { AuthService } from './authService'
 
@@ -16,12 +16,12 @@ const AuthInfo: Component = () => {
         // TODO: Use login button instead
         <Button
           component={A}
-          href={SIGNUP_PATH}
+          href={LOGIN_PATH}
           variant='contained'
           color='primary'
           sx={{ ml: 1 }}
         >
-          Sign up
+          Log in
         </Button>
       }
     >

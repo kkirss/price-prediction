@@ -1,7 +1,7 @@
 import { type Component } from 'solid-js'
-import { useNavigate } from '@solidjs/router'
+import { A, useNavigate } from '@solidjs/router'
 import { useService } from 'solid-services'
-import { Typography } from '@suid/material'
+import { Button, Typography } from '@suid/material'
 
 import { useLogin } from '@price-prediction/api-client'
 import { LoginRequest } from '@price-prediction/api-schema'
@@ -10,6 +10,7 @@ import { LoginForm } from '@price-prediction/auth-ui'
 import { AuthService } from '~/auth/authService'
 import { mapAPIErrorToFormError } from '~/errors/mapAPIErrorToFormError'
 import { CenteredBox } from '~/layout/CenteredBox'
+import { SIGNUP_PATH } from '~/pages/auth/paths'
 
 const Login: Component = () => {
   const authService = useService(AuthService)
@@ -39,6 +40,19 @@ const Login: Component = () => {
           maxWidth: '40ch'
         }}
       />
+      <Typography variant='body1' sx={{ mt: 6 }}>
+        Don't have an account?
+      </Typography>
+      <Button
+        component={A}
+        href={SIGNUP_PATH}
+        variant='contained'
+        color='primary'
+        size='large'
+        sx={{ mt: 1 }}
+      >
+        Sign up
+      </Button>
     </CenteredBox>
   )
 }
