@@ -1,17 +1,23 @@
 import { type Component } from 'solid-js'
+import { useNavigate } from '@solidjs/router'
+import { useService } from 'solid-services'
 import { Typography } from '@suid/material'
 
 import { useSignup } from '@price-prediction/api-client'
 import { type SignupRequest } from '@price-prediction/api-schema'
 import { SignupForm } from '@price-prediction/auth-ui'
 
+import { AuthService } from '~/auth/authService'
 import { mapAPIErrorToFormError } from '~/errors/mapAPIErrorToFormError'
 import { CenteredBox } from '~/layout/CenteredBox'
 
 const Signup: Component = () => {
+  const authService = useService(AuthService)
+  const navigate = useNavigate()
   const signup = useSignup({
-    onSuccess: (data) => {
-      alert(`Successfully signed up as ${data.user.username}`)
+    onSuccess: (session) => {
+      authService().setSession(session)
+      navigate('/')
     }
   })
   const onSubmit = async (data: SignupRequest): Promise<void> => {
