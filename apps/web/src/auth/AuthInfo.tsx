@@ -3,9 +3,9 @@ import { A } from '@solidjs/router'
 import { useService } from 'solid-services'
 import { Button, Typography } from '@suid/material'
 
-import { LOGIN_PATH } from '~/pages/auth/paths'
+import { AuthService } from '@price-prediction/api-client'
 
-import { AuthService } from './authService'
+import { LOGIN_PATH } from '~/pages/auth/paths'
 
 const AuthInfo: Component = () => {
   const authService = useService(AuthService)

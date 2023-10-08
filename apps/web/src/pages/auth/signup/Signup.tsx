@@ -3,11 +3,10 @@ import { useNavigate } from '@solidjs/router'
 import { useService } from 'solid-services'
 import { Typography } from '@suid/material'
 
-import { useSignup } from '@price-prediction/api-client'
+import { useSignup, AuthService } from '@price-prediction/api-client'
 import { type SignupRequest } from '@price-prediction/api-schema'
 import { SignupForm } from '@price-prediction/auth-ui'
 
-import { AuthService } from '~/auth/authService'
 import { mapAPIErrorToFormError } from '~/errors/mapAPIErrorToFormError'
 import { CenteredBox } from '~/layout/CenteredBox'
 
