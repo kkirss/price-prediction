@@ -1,13 +1,15 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import request from 'supertest'
 
+import { LOGIN_PATH } from '@price-prediction/api-schema'
+
 import { app } from '~/app'
 import { createUser, deleteUserIfExists } from '~/auth'
 
 describe('API login', () => {
   it('should return 400 error when no credentials are passed', async () => {
     const response = await request(app)
-      .post('/auth/login')
+      .post(LOGIN_PATH)
       .send({})
 
     expect(response.status).toBe(400)
@@ -43,7 +45,7 @@ describe('API login', () => {
 
   it('should return 401 error when invalid password is passed', async () => {
     const response = await request(app)
-      .post('/auth/login')
+      .post(LOGIN_PATH)
       .send({
         username: 'test_login',
         password: 'wrongpassword'
@@ -65,7 +67,7 @@ describe('API login', () => {
   })
   it('should return 401 error when user does not exist', async () => {
     const response = await request(app)
-      .post('/auth/login')
+      .post(LOGIN_PATH)
       .send({
         username: 'this_user_does_not_exist',
         password: 'testpassword'
@@ -87,7 +89,7 @@ describe('API login', () => {
   })
   it('can log in', async () => {
     const response = await request(app)
-      .post('/auth/login')
+      .post(LOGIN_PATH)
       .send({
         username: 'test_login',
         password: 'testpassword'

@@ -1,13 +1,15 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import request from 'supertest'
 
+import { LOGOUT_PATH } from '@price-prediction/api-schema'
+
 import { app } from '~/app'
 import { createSession, createUser, deleteUserIfExists } from '~/auth'
 
 describe('API logout', () => {
   it('should return 401 error with missing Authorization header', async () => {
     const response = await request(app)
-      .post('/auth/logout')
+      .post(LOGOUT_PATH)
       .send({})
 
     expect(response.status).toBe(401)
@@ -39,7 +41,7 @@ describe('API logout', () => {
     const sessionId: string = (await createSession(user.userId)).sessionId
 
     const response = await request(app)
-      .post('/auth/logout')
+      .post(LOGOUT_PATH)
       .set('Authorization', `Bearer ${sessionId}`)
       .send({})
 
@@ -52,7 +54,7 @@ describe('API logout', () => {
     `)
 
     const response2 = await request(app)
-      .post('/auth/logout')
+      .post(LOGOUT_PATH)
       .set('Authorization', `Bearer ${sessionId}`)
       .send({})
     expect(response2.status).toBe(401)

@@ -1,13 +1,15 @@
 import { afterEach, beforeAll, describe, expect, it } from 'vitest'
 import request from 'supertest'
 
+import { SIGNUP_PATH } from '@price-prediction/api-schema'
+
 import { app } from '~/app'
 import { deleteUserIfExists } from '~/auth'
 
 describe('API signup', () => {
   it('should return 400 error when no credentials are passed', async () => {
     const response = await request(app)
-      .post('/auth/signup')
+      .post(SIGNUP_PATH)
       .send({})
 
     expect(response.status).toBe(400)
@@ -32,7 +34,7 @@ describe('API signup', () => {
   })
   it('should return 400 error when username is empty', async () => {
     const response = await request(app)
-      .post('/auth/signup')
+      .post(SIGNUP_PATH)
       .send({
         username: '',
         password: 'testpassword'
@@ -55,7 +57,7 @@ describe('API signup', () => {
   })
   it('should return 400 error when password is shorter than 8 characters', async () => {
     const response = await request(app)
-      .post('/auth/signup')
+      .post(SIGNUP_PATH)
       .send({
         username: 'test_signup',
         password: '1234567'
@@ -88,7 +90,7 @@ describe('API signup', () => {
 
   it('should create a user', async () => {
     const response = await request(app)
-      .post('/auth/signup')
+      .post(SIGNUP_PATH)
       .send({
         username: 'test_signup',
         password: 'testpassword'
@@ -118,7 +120,7 @@ describe('API signup', () => {
   })
   it('should return 400 if username is taken', async () => {
     const response = await request(app)
-      .post('/auth/signup')
+      .post(SIGNUP_PATH)
       .send({
         username: 'test_signup',
         password: 'testpassword'
@@ -127,7 +129,7 @@ describe('API signup', () => {
     expect(response.status).toBe(201)
 
     const response2 = await request(app)
-      .post('/auth/signup')
+      .post(SIGNUP_PATH)
       .send({
         username: 'test_signup',
         password: 'testpassword'
