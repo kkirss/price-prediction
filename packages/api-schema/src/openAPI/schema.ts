@@ -21,12 +21,19 @@ export interface paths {
     /** Log in */
     post: operations["login"];
   };
+  "/auth/logout": {
+    /** Log out */
+    post: operations["logout"];
+  };
 }
 
 export type webhooks = Record<string, never>;
 
 export interface components {
   schemas: {
+    MessageResponse: {
+      message: string;
+    };
     ValidationErrorItem: {
       message: string;
       path: string;
@@ -67,6 +74,12 @@ export interface components {
     };
   };
   responses: {
+    /** @description Message */
+    MessageResponse: {
+      content: {
+        "application/json": components["schemas"]["MessageResponse"];
+      };
+    };
     /** @description Not found */
     NotFoundResponse: {
       content: {
@@ -165,6 +178,15 @@ export interface operations {
     requestBody: components["requestBodies"]["LoginRequest"];
     responses: {
       200: components["responses"]["LoginSuccessfulResponse"];
+      400: components["responses"]["BadRequestResponse"];
+      401: components["responses"]["UnauthorizedResponse"];
+      500: components["responses"]["InternalServerErrorResponse"];
+    };
+  };
+  /** Log out */
+  logout: {
+    responses: {
+      200: components["responses"]["MessageResponse"];
       400: components["responses"]["BadRequestResponse"];
       401: components["responses"]["UnauthorizedResponse"];
       500: components["responses"]["InternalServerErrorResponse"];

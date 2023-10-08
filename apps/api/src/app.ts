@@ -2,11 +2,12 @@ import { dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import path from 'path'
 import cors from 'cors'
-import express, { Request, type Response } from 'express'
+import express, { type Request, type Response } from 'express'
 import { middleware as openAPIMiddleware } from 'express-openapi-validator'
 
 import { type APIError, openAPISchema } from '@price-prediction/api-schema'
 
+import { authMiddleware } from './auth/authMiddleware'
 import { authRouter } from '~/authRoutes/routes'
 import { healthRouter } from '~/healthRoutes/routes'
 import { OpenAPIError } from '~/openAPI/errors'
@@ -31,6 +32,7 @@ app.use(
     validateResponses: true
   })
 )
+app.use(authMiddleware)
 
 app.use(healthRouter)
 app.use(authRouter)

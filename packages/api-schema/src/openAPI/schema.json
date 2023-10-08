@@ -24,10 +24,31 @@
     }
   ],
   "security": [
-    {}
+    {},
+    {
+      "BearerAuth": []
+    }
   ],
   "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "description": "Example:\nAuthorization: Bearer <sessionId>",
+        "scheme": "bearer"
+      }
+    },
     "schemas": {
+      "MessageResponse": {
+        "type": "object",
+        "required": [
+          "message"
+        ],
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        }
+      },
       "ValidationErrorItem": {
         "type": "object",
         "required": [
@@ -166,6 +187,16 @@
       }
     },
     "responses": {
+      "MessageResponse": {
+        "description": "Message",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/MessageResponse"
+            }
+          }
+        }
+      },
       "NotFoundResponse": {
         "description": "Not found",
         "content": {
@@ -304,6 +335,31 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/LoginSuccessfulResponse"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedResponse"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerErrorResponse"
+          }
+        }
+      }
+    },
+    "/auth/logout": {
+      "post": {
+        "summary": "Log out",
+        "operationId": "logout",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/MessageResponse"
           },
           "400": {
             "$ref": "#/components/responses/BadRequestResponse"
