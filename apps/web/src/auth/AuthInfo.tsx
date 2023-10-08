@@ -1,4 +1,5 @@
 import { Component, Show } from 'solid-js'
+import { A } from '@solidjs/router'
 import { useService } from 'solid-services'
 import { Button, Typography } from '@suid/material'
 
@@ -14,6 +15,7 @@ const AuthInfo: Component = () => {
       fallback={
         // TODO: Use login button instead
         <Button
+          component={A}
           href={SIGNUP_PATH}
           variant='contained'
           color='primary'
