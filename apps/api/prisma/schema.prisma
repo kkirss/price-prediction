@@ -33,3 +33,12 @@ model Key {
 
   @@index([user_id])
 }
+
+model Asset {
+  id              Int      @id @default(autoincrement())
+  slug            String   @unique
+  name            String
+  lastPriceUsd    Decimal
+  lastPriceChange DateTime
+  coincapId       String
+}
