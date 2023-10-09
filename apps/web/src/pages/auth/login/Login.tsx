@@ -1,9 +1,8 @@
 import { type Component } from 'solid-js'
 import { A, useNavigate } from '@solidjs/router'
-import { useService } from 'solid-services'
 import { Button, Typography } from '@suid/material'
 
-import { useLogin, AuthService } from '@price-prediction/api-client'
+import { useLogin } from '@price-prediction/api-client'
 import { LoginRequest } from '@price-prediction/api-schema'
 import { LoginForm } from '@price-prediction/auth-ui'
 
@@ -12,11 +11,9 @@ import { CenteredBox } from '~/layout/CenteredBox'
 import { SIGNUP_PATH } from '~/pages/auth/paths'
 
 const Login: Component = () => {
-  const authService = useService(AuthService)
   const navigate = useNavigate()
   const login = useLogin({
-    onSuccess: (session) => {
-      authService().setSession(session)
+    onSuccess: () => {
       navigate('/')
     }
   })

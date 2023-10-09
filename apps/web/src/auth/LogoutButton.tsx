@@ -1,19 +1,13 @@
 import { type Component, Show } from 'solid-js'
-import { useService } from 'solid-services'
 import { Button, CircularProgress } from '@suid/material'
 import { type SxProps } from '@suid/system'
 
-import { AuthService, useLogout } from '@price-prediction/api-client'
+import { useLogout } from '@price-prediction/api-client'
 
 export const LogoutButton: Component<{
   sx?: SxProps
 }> = (props) => {
-  const authService = useService(AuthService)
-  const logout = useLogout({
-    onSuccess: () => {
-      authService().clearSession()
-    }
-  })
+  const logout = useLogout()
   return (
     <Button
       variant='outlined'

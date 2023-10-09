@@ -3,10 +3,12 @@ import { createMutation, CreateMutationOptions } from '@tanstack/solid-query'
 
 import { APIErrorObject, LoginRequest, Session, LOGIN_PATH } from '@price-prediction/api-schema'
 
+import { AuthService } from '~/services/authService'
 import { APIClientService } from '~/services/client'
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const useLogin = (options?: CreateMutationOptions<Session, unknown, LoginRequest>) => {
+  const authService = useService(AuthService)
   const client = useService(APIClientService)
   return createMutation({
     mutationFn: async (inputData: LoginRequest) => {
@@ -16,6 +18,12 @@ export const useLogin = (options?: CreateMutationOptions<Session, unknown, Login
       }
       return data
     },
-    ...options
+    ...options,
+    onSuccess: (session, ...args) => {
+      authService().setSession(session)
+      if (options?.onSuccess !== undefined) {
+        options.onSuccess(session, ...args)
+      }
+    }
   })
 }
