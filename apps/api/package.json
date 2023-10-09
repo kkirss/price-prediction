@@ -60,6 +60,9 @@
   "optionalDependencies": {
     "fsevents": "^2.3.3"
   },
+  "prisma": {
+    "seed": "node ./prisma/seed.js"
+  },
   "ts-standard": {
     "ignore": [
       "dist",
