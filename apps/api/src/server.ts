@@ -16,7 +16,7 @@ const getPort = (): number => {
   return port
 }
 
-checkPricesForever('bitcoin', 5000).finally(() => {
+checkPricesForever(5000).finally(() => {
   console.error('Price checking loop exited unexpectedly')
   process.exit(1)
 })

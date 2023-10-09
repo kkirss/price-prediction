@@ -25,7 +25,7 @@
     "lint-db-schema": "prisma format",
     "generate-db-client": "prisma generate",
     "validate-db-schema": "prisma validate",
-    "migrate-db-dev": "prisma migrate dev --skip-generate"
+    "migrate-db-dev": "prisma migrate dev"
   },
   "dependencies": {
     "@lucia-auth/adapter-prisma": "^3.0.2",
