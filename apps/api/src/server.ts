@@ -1,3 +1,7 @@
+import * as process from 'process'
+
+import { checkPricesForever } from '~/priceUpdate/checkPricesForever'
+
 import { app } from './app'
 
 const getPort = (): number => {
@@ -11,6 +15,11 @@ const getPort = (): number => {
   }
   return port
 }
+
+checkPricesForever('bitcoin', 5000).finally(() => {
+  console.error('Price checking loop exited unexpectedly')
+  process.exit(1)
+})
 
 if (import.meta.env.PROD) {
   const port = getPort()

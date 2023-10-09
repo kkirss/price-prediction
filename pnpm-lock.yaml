@@ -23,6 +23,9 @@ importers:
       '@price-prediction/api-schema':
         specifier: workspace:*
         version: link:../../packages/api-schema
+      '@price-prediction/coincap-api':
+        specifier: workspace:*
+        version: link:../../packages/coincap-api
       '@prisma/client':
         specifier: 5.4.1
         version: 5.4.1(prisma@5.4.1)

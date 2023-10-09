@@ -30,6 +30,9 @@
       "path": "../../packages/api-schema"
     },
     {
+      "path": "../../packages/coincap-api"
+    },
+    {
       "path": "../../packages/tsconfig"
     },
     {
