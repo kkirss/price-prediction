@@ -22,7 +22,6 @@
     "@price-prediction/api-client": "workspace:*",
     "@price-prediction/api-schema": "workspace:*",
     "@price-prediction/auth-ui": "workspace:*",
-    "@price-prediction/coincap-api": "workspace:*",
     "@price-prediction/financial-assets-ui": "workspace:*",
     "@price-prediction/ui-theme": "workspace:*",
     "@solidjs/router": "^0.8.3",
