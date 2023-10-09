@@ -1,5 +1,6 @@
 import { type components } from './schema'
 
+export type MessageResponse = components['schemas']['MessageResponse']
 export type ValidationErrorItem = components['schemas']['ValidationErrorItem']
 export type APIError = components['schemas']['APIError']
 export type SignupRequest = components['schemas']['SignupRequest']

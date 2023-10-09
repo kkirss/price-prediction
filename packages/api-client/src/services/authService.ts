@@ -1,11 +1,16 @@
 import { Accessor, createMemo, createSignal } from 'solid-js'
+import { useService } from 'solid-services'
 
 import type { Session } from '@price-prediction/api-schema'
+
+type AuthHeaders = Record<string, string>
 
 export interface AuthInfo {
   isAuthenticated: Accessor<boolean>
   session: Accessor<Session | null>
+  authHeaders: Accessor<AuthHeaders>
   setSession: (session: Session) => void
+  clearSession: () => void
 }
 
 const SESSION_STORAGE_KEY = 'session'
@@ -45,12 +50,30 @@ export const AuthService = (): AuthInfo => {
   })
 
   const [session, setSession] = createSignal<Session | null>(storedSession())
+
   return {
     isAuthenticated: createMemo(() => session() !== null),
     session,
+    authHeaders: createMemo<AuthHeaders>(() => {
+      const sessionObj = session()
+      if (sessionObj === null) {
+        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+        return {} as AuthHeaders
+      }
+      return { Authorization: `Bearer ${sessionObj.sessionId}` }
+    }),
     setSession: (session: Session) => {
       setStoredSession(session)
       setSession(session)
+    },
+    clearSession: () => {
+      clearStoredSession()
+      setSession(null)
     }
   }
+}
+
+export const useAuthHeaders = (): Accessor<AuthHeaders> => {
+  const authService = useService(AuthService)
+  return authService().authHeaders
 }

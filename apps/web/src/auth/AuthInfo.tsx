@@ -7,13 +7,14 @@ import { AuthService } from '@price-prediction/api-client'
 
 import { LOGIN_PATH } from '~/pages/auth/paths'
 
+import { LogoutButton } from './LogoutButton'
+
 const AuthInfo: Component = () => {
   const authService = useService(AuthService)
   return (
     <Show
       when={authService().session()}
       fallback={
-        // TODO: Use login button instead
         <Button
           component={A}
           href={LOGIN_PATH}
@@ -26,10 +27,12 @@ const AuthInfo: Component = () => {
       }
     >
       {(session) => (
-        <Typography overflow='ellipsis'>
-          {session().user.username}
-        </Typography>
-        // TODO: Add logout button
+        <>
+          <Typography overflow='ellipsis' sx={{ ml: 1, maxWidth: '20ch' }}>
+            {session().user.username}
+          </Typography>
+          <LogoutButton sx={{ ml: 1 }} />
+        </>
       )}
     </Show>
   )
