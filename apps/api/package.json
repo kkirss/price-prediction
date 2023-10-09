@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@lucia-auth/adapter-prisma": "^3.0.2",
+    "@price-prediction/api-schema": "workspace:*",
     "@prisma/client": "5.4.1",
     "@types/qs": "^6.9.8",
     "cors": "^2.8.5",
@@ -38,7 +39,6 @@
     "lucia": "^2.7.1"
   },
   "devDependencies": {
-    "@price-prediction/api-schema": "workspace:*",
     "@price-prediction/tsconfig": "workspace:*",
     "@price-prediction/vite-config": "workspace:*",
     "@types/cors": "^2.8.14",

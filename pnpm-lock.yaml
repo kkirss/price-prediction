@@ -20,6 +20,9 @@ importers:
       '@lucia-auth/adapter-prisma':
         specifier: ^3.0.2
         version: 3.0.2(@prisma/client@5.4.1)(lucia@2.7.1)
+      '@price-prediction/api-schema':
+        specifier: workspace:*
+        version: link:../../packages/api-schema
       '@prisma/client':
         specifier: 5.4.1
         version: 5.4.1(prisma@5.4.1)
@@ -46,9 +49,6 @@ importers:
         specifier: ^2.3.3
         version: 2.3.3
     devDependencies:
-      '@price-prediction/api-schema':
-        specifier: workspace:*
-        version: link:../../packages/api-schema
       '@price-prediction/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
