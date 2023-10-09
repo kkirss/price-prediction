@@ -7,6 +7,9 @@ export const PRICE_DECIMAL_PLACES = 10
 export const getAllAssets = async (): Promise<Asset[]> =>
   await dbClient.asset.findMany()
 
+export const getAssetBySlug = async (slug: string): Promise<Asset | null> =>
+  await dbClient.asset.findUnique({ where: { slug } })
+
 export const updateAssetPrice = async (
   id: number,
   priceUsd: Prisma.Decimal,

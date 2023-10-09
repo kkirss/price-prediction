@@ -23,3 +23,10 @@ export const createUnauthorizedError = (message: string): HttpError =>
     message,
     path: '/body'
   })
+
+export const createNotFoundError = (message: string): HttpError =>
+  HttpError.create({
+    status: 404,
+    message,
+    path: '/body'
+  })

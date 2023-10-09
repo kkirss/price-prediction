@@ -162,6 +162,39 @@
             "$ref": "#/components/schemas/User"
           }
         }
+      },
+      "Asset": {
+        "description": "Financial asset",
+        "type": "object",
+        "required": [
+          "id",
+          "slug",
+          "name",
+          "lastPriceUsd",
+          "lastPriceChange",
+          "coincapId"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "lastPriceUsd": {
+            "type": "string"
+          },
+          "lastPriceChange": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "coincapId": {
+            "type": "string"
+          }
+        }
       }
     },
     "requestBodies": {
@@ -183,6 +216,16 @@
               "$ref": "#/components/schemas/LoginRequest"
             }
           }
+        }
+      }
+    },
+    "parameters": {
+      "assetSlug": {
+        "name": "assetSlug",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
         }
       }
     },
@@ -264,6 +307,16 @@
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/Session"
+            }
+          }
+        }
+      },
+      "AssetResponse": {
+        "description": "Financial asset",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Asset"
             }
           }
         }
@@ -366,6 +419,34 @@
           },
           "401": {
             "$ref": "#/components/responses/UnauthorizedResponse"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerErrorResponse"
+          }
+        }
+      }
+    },
+    "/assets/{assetSlug}": {
+      "get": {
+        "summary": "Get asset",
+        "operationId": "getAsset",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/assetSlug"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/AssetResponse"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedResponse"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundResponse"
           },
           "500": {
             "$ref": "#/components/responses/InternalServerErrorResponse"

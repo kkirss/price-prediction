@@ -9,6 +9,7 @@ import { type APIError, openAPISchema } from '@price-prediction/api-schema'
 
 import { authMiddleware } from './auth/authMiddleware'
 import { authRouter } from '~/authRoutes/routes'
+import { assetsRouter } from '~/assetsRoutes/routes'
 import { healthRouter } from '~/healthRoutes/routes'
 import { OpenAPIError } from '~/openAPI/errors'
 
@@ -36,6 +37,7 @@ app.use(authMiddleware)
 
 app.use(healthRouter)
 app.use(authRouter)
+app.use(assetsRouter)
 
 app.use((err: OpenAPIError, _req: Request, res: Response, _next: any) => {
   console.error(err)

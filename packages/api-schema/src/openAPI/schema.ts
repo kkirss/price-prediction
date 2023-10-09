@@ -25,6 +25,10 @@ export interface paths {
     /** Log out */
     post: operations["logout"];
   };
+  "/assets/{assetSlug}": {
+    /** Get asset */
+    get: operations["getAsset"];
+  };
 }
 
 export type webhooks = Record<string, never>;
@@ -71,6 +75,16 @@ export interface components {
       idlePeriodExpiresAt: string;
       sessionId: string;
       user: components["schemas"]["User"];
+    };
+    /** @description Financial asset */
+    Asset: {
+      id: number;
+      slug: string;
+      name: string;
+      lastPriceUsd: string;
+      /** Format: date-time */
+      lastPriceChange: string;
+      coincapId: string;
     };
   };
   responses: {
@@ -122,8 +136,16 @@ export interface components {
         "application/json": components["schemas"]["Session"];
       };
     };
+    /** @description Financial asset */
+    AssetResponse: {
+      content: {
+        "application/json": components["schemas"]["Asset"];
+      };
+    };
   };
-  parameters: never;
+  parameters: {
+    assetSlug: string;
+  };
   requestBodies: {
     /** @description Sign up request */
     SignupRequest?: {
@@ -189,6 +211,21 @@ export interface operations {
       200: components["responses"]["MessageResponse"];
       400: components["responses"]["BadRequestResponse"];
       401: components["responses"]["UnauthorizedResponse"];
+      500: components["responses"]["InternalServerErrorResponse"];
+    };
+  };
+  /** Get asset */
+  getAsset: {
+    parameters: {
+      path: {
+        assetSlug: components["parameters"]["assetSlug"];
+      };
+    };
+    responses: {
+      200: components["responses"]["AssetResponse"];
+      400: components["responses"]["BadRequestResponse"];
+      401: components["responses"]["UnauthorizedResponse"];
+      404: components["responses"]["NotFoundResponse"];
       500: components["responses"]["InternalServerErrorResponse"];
     };
   };
