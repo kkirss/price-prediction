@@ -1,10 +1,10 @@
-import { afterAll, beforeAll, describe, expect, it } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import request from 'supertest'
 
 import { LOGOUT_PATH } from '@price-prediction/api-schema'
 
 import { app } from '~/app'
-import { createSession, createUser, deleteUserIfExists } from '~/auth'
+import { withAuthenticationIt } from '~/auth/test'
 
 describe('API logout', () => {
   it('should return 401 error with missing Authorization header', async () => {
@@ -26,23 +26,11 @@ describe('API logout', () => {
       }
     `)
   })
-})
 
-describe('API logout', () => {
-  beforeAll(async () => {
-    await deleteUserIfExists('test_logout')
-  })
-  afterAll(async () => {
-    await deleteUserIfExists('test_logout')
-  })
-
-  it('can log out', async () => {
-    const user = await createUser('test_logout', 'testpassword')
-    const sessionId: string = (await createSession(user.userId)).sessionId
-
+  withAuthenticationIt('can log out', async ({ authHeader }) => {
     const response = await request(app)
       .post(LOGOUT_PATH)
-      .set('Authorization', `Bearer ${sessionId}`)
+      .set('Authorization', authHeader)
       .send({})
 
     expect(response.status).toBe(200)
@@ -55,7 +43,7 @@ describe('API logout', () => {
 
     const response2 = await request(app)
       .post(LOGOUT_PATH)
-      .set('Authorization', `Bearer ${sessionId}`)
+      .set('Authorization', authHeader)
       .send({})
     expect(response2.status).toBe(401)
   })
