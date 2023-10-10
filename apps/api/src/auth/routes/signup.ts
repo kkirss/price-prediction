@@ -4,7 +4,7 @@ import { type SignupRequest, type Session as ResponseSession } from '@price-pred
 
 import { createSession, createUser, getResponseSession } from '~/auth'
 import { isUniqueConstraintError } from '~/database'
-import { createValidatorError } from '~/openAPI/errors'
+import { createValidatorError } from '~/openAPI'
 
 export const signup = asyncHandler(async (req, res) => {
   const { username, password }: SignupRequest = req.body

@@ -1,6 +1,6 @@
 import * as process from 'process'
 
-import { checkPricesForever } from '~/priceUpdate/checkPricesForever'
+import { checkPricesForever } from '~/priceUpdate'
 
 import { app } from './app'
 

@@ -2,7 +2,7 @@ import { Router } from 'express'
 
 import { LOGIN_PATH, LOGOUT_PATH, SIGNUP_PATH } from '@price-prediction/api-schema'
 
-import { registerUnauthorizedRoute } from '~/auth/unauthorizedRoutes'
+import { registerUnauthorizedRoute } from '~/auth'
 
 import { login } from './login'
 import { signup } from './signup'

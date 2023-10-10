@@ -1,6 +1,6 @@
 import { Asset, Prisma } from '@prisma/client'
 
-import { dbClient } from './client'
+import { dbClient } from '~/database'
 
 export const PRICE_DECIMAL_PLACES = 10
 

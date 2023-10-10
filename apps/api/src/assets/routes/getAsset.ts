@@ -2,10 +2,8 @@ import asyncHandler from 'express-async-handler'
 
 import { Asset as ResponseAsset, type operations } from '@price-prediction/api-schema'
 
-import { getAssetBySlug } from '~/database/assets'
-import { createNotFoundError } from '~/openAPI/errors'
-
-import { getResponseAsset } from './asset'
+import { getAssetBySlug, getResponseAsset } from '~/assets'
+import { createNotFoundError } from '~/openAPI'
 
 export const getAsset = asyncHandler<operations['getAsset']['parameters']['path']>(async (req, res) => {
   const asset = await getAssetBySlug(req.params.assetSlug)

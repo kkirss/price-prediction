@@ -4,7 +4,7 @@ import asyncHandler from 'express-async-handler'
 import { createUnauthorizedError } from '~/openAPI'
 
 import { auth } from './auth'
-import { isUnauthorizedRoute } from '~/auth/unauthorizedRoutes'
+import { isUnauthorizedRoute } from './unauthorizedRoutes'
 
 export const authMiddleware = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
   if (isUnauthorizedRoute(req.path)) {

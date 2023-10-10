@@ -1,6 +1,6 @@
 import { Router } from 'express'
 
-import { registerUnauthorizedRoute } from '~/auth/unauthorizedRoutes'
+import { registerUnauthorizedRoute } from '~/auth'
 
 import { getAsset } from './getAsset'
 

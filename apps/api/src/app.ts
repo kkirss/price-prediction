@@ -7,11 +7,11 @@ import { middleware as openAPIMiddleware } from 'express-openapi-validator'
 
 import { type APIError, openAPISchema } from '@price-prediction/api-schema'
 
-import { authMiddleware } from './auth/authMiddleware'
-import { authRouter } from '~/authRoutes/routes'
-import { assetsRouter } from '~/assetsRoutes/routes'
-import { healthRouter } from '~/healthRoutes/routes'
-import { OpenAPIError } from '~/openAPI/errors'
+import { authMiddleware } from '~/auth'
+import { authRouter } from '~/auth/routes'
+import { assetsRouter } from '~/assets/routes'
+import { healthRouter } from '~/health/routes'
+import { OpenAPIError } from '~/openAPI'
 
 const _dirname = typeof __dirname !== 'undefined'
   ? __dirname

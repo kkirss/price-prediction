@@ -1,7 +1,7 @@
 import { ASSET_DETAILS_PATH, CoinCapClient, createFetchClient } from '@price-prediction/coincap-api'
 import { Prisma } from '@prisma/client'
 
-import { getAllAssets, updateAssetPrice } from '~/database/assets'
+import { getAllAssets, updateAssetPrice } from '~/assets'
 
 export const client: CoinCapClient = createFetchClient()
 

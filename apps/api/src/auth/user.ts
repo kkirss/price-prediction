@@ -1,7 +1,8 @@
 import { User } from 'lucia'
 
-import { auth } from './auth'
 import { dbClient } from '~/database'
+
+import { auth } from './auth'
 
 export const createUser = async (username: string, password: string): Promise<User> =>
   await auth.createUser({

@@ -2,7 +2,7 @@ import { RequestHandler, Router } from 'express'
 
 import { HEALTH_PATH, HEALTH_ROOT_PATH } from '@price-prediction/api-schema'
 
-import { registerUnauthorizedRoute } from '~/auth/unauthorizedRoutes'
+import { registerUnauthorizedRoute } from '~/auth'
 
 const healthRouter = Router()
 
