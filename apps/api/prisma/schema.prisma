@@ -9,10 +9,11 @@ datasource db {
 
 // Auth models for Lucia, copied from https://lucia-auth.com/database-adapters/prisma/#prisma-schema
 model User {
-  id           String    @id @unique
-  username     String    @unique
-  auth_session Session[]
-  key          Key[]
+  id              String            @id @unique
+  username        String            @unique
+  auth_session    Session[]
+  key             Key[]
+  PricePrediction PricePrediction[]
 }
 
 model Session {
@@ -35,10 +36,25 @@ model Key {
 }
 
 model Asset {
-  id              Int      @id @default(autoincrement())
-  slug            String   @unique
-  name            String
-  lastPriceUsd    Decimal
-  lastPriceChange DateTime
-  coincapId       String
+  id               Int               @id @default(autoincrement())
+  slug             String            @unique
+  name             String
+  lastPriceUsd     Decimal
+  lastPriceChange  DateTime
+  coincapId        String
+  pricePredictions PricePrediction[]
+}
+
+model PricePrediction {
+  id                    Int       @id @default(autoincrement())
+  userId                String
+  user                  User      @relation(references: [id], fields: [userId], onDelete: Cascade)
+  assetId               Int
+  asset                 Asset     @relation(references: [id], fields: [assetId], onDelete: Cascade)
+  predictionType        String
+  initialPriceUsd       Decimal
+  predictionTime        DateTime
+  finalPriceUsd         Decimal?
+  predictionResolveTime DateTime?
+  scoreChange           Int?
 }
