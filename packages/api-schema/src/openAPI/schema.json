@@ -280,6 +280,16 @@
             }
           }
         }
+      },
+      "CreatePricePrediction": {
+        "description": "Create price prediction",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/CreatePricePrediction"
+            }
+          }
+        }
       }
     },
     "parameters": {
@@ -384,7 +394,7 @@
           }
         }
       },
-      "LatestPricePredictionResponse": {
+      "PricePredictionResponse": {
         "description": "Latest price prediction",
         "content": {
           "application/json": {
@@ -527,6 +537,42 @@
         }
       }
     },
+    "/assets/{assetSlug}/price-predictions": {
+      "post": {
+        "summary": "Create price prediction for an asset",
+        "operationId": "createPricePrediction",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/assetSlug"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CreatePricePrediction"
+        },
+        "responses": {
+          "201": {
+            "$ref": "#/components/responses/PricePredictionResponse"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedResponse"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundResponse"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerErrorResponse"
+          }
+        }
+      }
+    },
     "/assets/{assetSlug}/price-predictions/latest": {
       "get": {
         "summary": "Get latest price prediction for an asset",
@@ -543,7 +589,7 @@
         ],
         "responses": {
           "200": {
-            "$ref": "#/components/responses/LatestPricePredictionResponse"
+            "$ref": "#/components/responses/PricePredictionResponse"
           },
           "400": {
             "$ref": "#/components/responses/BadRequestResponse"

@@ -58,3 +58,11 @@ export const createPricePrediction = async (
     }
   })
 }
+
+export const deletePricePrediction = async (pricePredictionId: number): Promise<void> => {
+  await dbClient.pricePrediction.delete({
+    where: {
+      id: pricePredictionId
+    }
+  })
+}

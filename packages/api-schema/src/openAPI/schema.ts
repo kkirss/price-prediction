@@ -29,6 +29,10 @@ export interface paths {
     /** Get asset */
     get: operations["getAsset"];
   };
+  "/assets/{assetSlug}/price-predictions": {
+    /** Create price prediction for an asset */
+    post: operations["createPricePrediction"];
+  };
   "/assets/{assetSlug}/price-predictions/latest": {
     /** Get latest price prediction for an asset */
     get: operations["getLatestPricePrediction"];
@@ -165,7 +169,7 @@ export interface components {
       };
     };
     /** @description Latest price prediction */
-    LatestPricePredictionResponse: {
+    PricePredictionResponse: {
       content: {
         "application/json": components["schemas"]["PricePrediction"];
       };
@@ -185,6 +189,12 @@ export interface components {
     LoginRequest?: {
       content: {
         "application/json": components["schemas"]["LoginRequest"];
+      };
+    };
+    /** @description Create price prediction */
+    CreatePricePrediction?: {
+      content: {
+        "application/json": components["schemas"]["CreatePricePrediction"];
       };
     };
   };
@@ -257,6 +267,22 @@ export interface operations {
       500: components["responses"]["InternalServerErrorResponse"];
     };
   };
+  /** Create price prediction for an asset */
+  createPricePrediction: {
+    parameters: {
+      path: {
+        assetSlug: components["parameters"]["assetSlug"];
+      };
+    };
+    requestBody: components["requestBodies"]["CreatePricePrediction"];
+    responses: {
+      201: components["responses"]["PricePredictionResponse"];
+      400: components["responses"]["BadRequestResponse"];
+      401: components["responses"]["UnauthorizedResponse"];
+      404: components["responses"]["NotFoundResponse"];
+      500: components["responses"]["InternalServerErrorResponse"];
+    };
+  };
   /** Get latest price prediction for an asset */
   getLatestPricePrediction: {
     parameters: {
@@ -265,7 +291,7 @@ export interface operations {
       };
     };
     responses: {
-      200: components["responses"]["LatestPricePredictionResponse"];
+      200: components["responses"]["PricePredictionResponse"];
       400: components["responses"]["BadRequestResponse"];
       401: components["responses"]["UnauthorizedResponse"];
       404: components["responses"]["NotFoundResponse"];
