@@ -5,7 +5,7 @@ import { type operations } from '@price-prediction/api-schema'
 import { getAssetBySlug } from '~/assets'
 import { createNotFoundError } from '~/openAPI'
 import {
-  getPreviousPricePrediction,
+  getPricePredictionResponse,
   getUserLatestPricePrediction
 } from '~/pricePredictions'
 
@@ -20,8 +20,8 @@ export const getLatestPricePrediction = asyncHandler<operations['getLatestPriceP
     throw createNotFoundError('Price prediction not found')
   }
 
-  const previousPricePrediction = getPreviousPricePrediction(asset, pricePrediction)
+  const pricePredictionResponse = getPricePredictionResponse(asset, pricePrediction)
   res
     .status(200)
-    .json(previousPricePrediction)
+    .json(pricePredictionResponse)
 })

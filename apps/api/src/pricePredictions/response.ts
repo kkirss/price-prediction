@@ -1,8 +1,8 @@
 import { Asset, type PricePrediction } from '@prisma/client'
 
-import { PredictionType, type PreviousPricePrediction } from '@price-prediction/api-schema'
+import { PredictionType, type PricePrediction as PricePredictionResponse } from '@price-prediction/api-schema'
 
-export const getPreviousPricePrediction = (asset: Asset, pricePrediction: PricePrediction): PreviousPricePrediction => ({
+export const getPricePredictionResponse = (asset: Asset, pricePrediction: PricePrediction): PricePredictionResponse => ({
   id: pricePrediction.id,
   assetSlug: asset.slug,
   predictionType: pricePrediction.predictionType as PredictionType,

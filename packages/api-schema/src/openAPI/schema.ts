@@ -92,11 +92,11 @@ export interface components {
     };
     /** @enum {string} */
     PredictionType: "up" | "down";
-    CreatePricePredictionPayload: {
+    CreatePricePrediction: {
       predictionType: components["schemas"]["PredictionType"];
     };
     /** @description Price prediction */
-    PreviousPricePrediction: {
+    PricePrediction: {
       id: number;
       assetSlug: string;
       predictionType: components["schemas"]["PredictionType"];
@@ -167,7 +167,7 @@ export interface components {
     /** @description Latest price prediction */
     LatestPricePredictionResponse: {
       content: {
-        "application/json": components["schemas"]["PreviousPricePrediction"];
+        "application/json": components["schemas"]["PricePrediction"];
       };
     };
   };
