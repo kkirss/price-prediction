@@ -1,10 +1,12 @@
+import { type Accessor } from 'solid-js'
 import { useService } from 'solid-services'
 import { createQuery } from '@tanstack/solid-query'
 
 import { APIErrorObject, ASSETS_DETAIL_PATH } from '@price-prediction/api-schema'
 
 import { APIClientService } from '~/services/client'
-import { Accessor } from 'solid-js'
+
+import { type AssetData } from './types'
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const useAssetDetails = (assetSlug: Accessor<string>) => {
@@ -20,6 +22,10 @@ export const useAssetDetails = (assetSlug: Accessor<string>) => {
       }
       return data
     },
+    select: ({ lastPriceUsd, ...rest }): AssetData => ({
+      ...rest,
+      lastPriceUsd: Number(lastPriceUsd)
+    }),
     refetchInterval: 5000
   })
 }

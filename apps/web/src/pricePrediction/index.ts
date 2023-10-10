@@ -1,1 +1,2 @@
-export * from './PricePrediction'
+export * from './AssetPricePrediction'
+export * from './PricePredicting'

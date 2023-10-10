@@ -1,11 +1,12 @@
-import { Component, createMemo, Show, Suspense } from 'solid-js'
+import { type Component, Show, Suspense } from 'solid-js'
 import { Alert, CircularProgress } from '@suid/material'
 import { type SxProps } from '@suid/system'
 
 import { useAssetDetails } from '@price-prediction/api-client'
-import { PredictAssetPrice } from '@price-prediction/financial-assets-ui'
 
-export const PricePrediction: Component<{
+import { AssetPricePrediction } from './AssetPricePrediction'
+
+export const PricePredicting: Component<{
   assetId: string
   sx?: SxProps
 }> = (props) => {
@@ -14,13 +15,9 @@ export const PricePrediction: Component<{
     <Suspense fallback={<CircularProgress />}>
       <Show when={assetQuery.data}>
         {(assetResponse) =>
-          <PredictAssetPrice
+          <AssetPricePrediction
+            asset={assetResponse()}
             sx={props.sx}
-            assetName={assetResponse().name}
-            price={createMemo(() => Number(assetResponse().lastPriceUsd))()}
-            currencySymbol='$'
-            onPredictPrice={() => {
-            }}
           />}
       </Show>
       <Show when={assetQuery.error}>

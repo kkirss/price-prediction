@@ -1,11 +1,11 @@
 import { Component } from 'solid-js'
 
 import { CenteredBox } from '~/layout/CenteredBox'
-import { PricePrediction } from '~/pricePrediction'
+import { PricePredicting } from '~/pricePrediction'
 
 const Home: Component = () =>
   <CenteredBox>
-    <PricePrediction
+    <PricePredicting
       assetId='bitcoin'
       sx={{ minWidth: '50%' }}
     />
