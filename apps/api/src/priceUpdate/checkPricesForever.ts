@@ -2,6 +2,7 @@ import { ASSET_DETAILS_PATH, CoinCapClient, createFetchClient } from '@price-pre
 import { Prisma } from '@prisma/client'
 
 import { getAllAssets, updateAssetPrice } from '~/assets'
+import {handlePriceUpdate} from "~/priceUpdate/handlePriceUpdate";
 
 export const client: CoinCapClient = createFetchClient()
 
@@ -21,12 +22,11 @@ export const checkPricesForever = async (frequencyMs: number): Promise<void> => 
           params: { path: { id: asset.coincapId } }
         })
         if (data !== undefined) {
-          const updated = await updateAssetPrice(
+          await handlePriceUpdate(
             asset.id,
-            new Prisma.Decimal(data.data.priceUsd),
+            data.data.priceUsd,
             new Date(data.timestamp)
           )
-          console.debug(`Updated price of ${updated.name} to $${String(updated.lastPriceUsd)}`)
         } else {
           console.error('Error fetching asset price:', error?.error)
         }
