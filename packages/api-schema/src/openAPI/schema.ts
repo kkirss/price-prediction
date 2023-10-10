@@ -29,6 +29,10 @@ export interface paths {
     /** Get asset */
     get: operations["getAsset"];
   };
+  "/assets/{assetSlug}/price-predictions/latest": {
+    /** Get latest price prediction for an asset */
+    get: operations["getLatestPricePrediction"];
+  };
 }
 
 export type webhooks = Record<string, never>;
@@ -86,6 +90,24 @@ export interface components {
       lastPriceChange: string;
       coincapId: string;
     };
+    /** @enum {string} */
+    PredictionType: "up" | "down";
+    CreatePricePredictionPayload: {
+      predictionType: components["schemas"]["PredictionType"];
+    };
+    /** @description Price prediction */
+    PreviousPricePrediction: {
+      id: number;
+      assetSlug: string;
+      predictionType: components["schemas"]["PredictionType"];
+      initialPriceUsd: string;
+      /** Format: date-time */
+      predictionTime: string;
+      finalPriceUsd: string | null;
+      /** Format: date-time */
+      predictionResolveTime: string | null;
+      scoreChange: number | null;
+    };
   };
   responses: {
     /** @description Message */
@@ -140,6 +162,12 @@ export interface components {
     AssetResponse: {
       content: {
         "application/json": components["schemas"]["Asset"];
+      };
+    };
+    /** @description Latest price prediction */
+    LatestPricePredictionResponse: {
+      content: {
+        "application/json": components["schemas"]["PreviousPricePrediction"];
       };
     };
   };
@@ -223,6 +251,21 @@ export interface operations {
     };
     responses: {
       200: components["responses"]["AssetResponse"];
+      400: components["responses"]["BadRequestResponse"];
+      401: components["responses"]["UnauthorizedResponse"];
+      404: components["responses"]["NotFoundResponse"];
+      500: components["responses"]["InternalServerErrorResponse"];
+    };
+  };
+  /** Get latest price prediction for an asset */
+  getLatestPricePrediction: {
+    parameters: {
+      path: {
+        assetSlug: components["parameters"]["assetSlug"];
+      };
+    };
+    responses: {
+      200: components["responses"]["LatestPricePredictionResponse"];
       400: components["responses"]["BadRequestResponse"];
       401: components["responses"]["UnauthorizedResponse"];
       404: components["responses"]["NotFoundResponse"];

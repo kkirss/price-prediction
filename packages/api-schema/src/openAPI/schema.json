@@ -195,6 +195,69 @@
             "type": "string"
           }
         }
+      },
+      "PredictionType": {
+        "type": "string",
+        "enum": [
+          "up",
+          "down"
+        ]
+      },
+      "CreatePricePredictionPayload": {
+        "type": "object",
+        "required": [
+          "predictionType"
+        ],
+        "properties": {
+          "predictionType": {
+            "$ref": "#/components/schemas/PredictionType"
+          }
+        }
+      },
+      "PreviousPricePrediction": {
+        "description": "Price prediction",
+        "type": "object",
+        "required": [
+          "id",
+          "assetSlug",
+          "predictionType",
+          "initialPriceUsd",
+          "predictionTime",
+          "finalPriceUsd",
+          "predictionResolveTime",
+          "scoreChange"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "assetSlug": {
+            "type": "string"
+          },
+          "predictionType": {
+            "$ref": "#/components/schemas/PredictionType"
+          },
+          "initialPriceUsd": {
+            "type": "string"
+          },
+          "predictionTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "finalPriceUsd": {
+            "type": "string",
+            "nullable": true
+          },
+          "predictionResolveTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "scoreChange": {
+            "type": "integer",
+            "nullable": true
+          }
+        }
       }
     },
     "requestBodies": {
@@ -320,6 +383,16 @@
             }
           }
         }
+      },
+      "LatestPricePredictionResponse": {
+        "description": "Latest price prediction",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/PreviousPricePrediction"
+            }
+          }
+        }
       }
     }
   },
@@ -438,6 +511,39 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/AssetResponse"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequestResponse"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedResponse"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundResponse"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerErrorResponse"
+          }
+        }
+      }
+    },
+    "/assets/{assetSlug}/price-predictions/latest": {
+      "get": {
+        "summary": "Get latest price prediction for an asset",
+        "operationId": "getLatestPricePrediction",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/assetSlug"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/LatestPricePredictionResponse"
           },
           "400": {
             "$ref": "#/components/responses/BadRequestResponse"

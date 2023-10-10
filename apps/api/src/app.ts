@@ -11,6 +11,7 @@ import { authMiddleware } from '~/auth'
 import { authRouter } from '~/auth/routes'
 import { assetsRouter } from '~/assets/routes'
 import { healthRouter } from '~/health/routes'
+import { pricePredictionsRouter } from '~/pricePredictions/routes'
 import { OpenAPIError } from '~/openAPI'
 
 const _dirname = typeof __dirname !== 'undefined'
@@ -38,6 +39,7 @@ app.use(authMiddleware)
 app.use(healthRouter)
 app.use(authRouter)
 app.use(assetsRouter)
+app.use(pricePredictionsRouter)
 
 app.use((err: OpenAPIError, _req: Request, res: Response, _next: any) => {
   console.error(err)
