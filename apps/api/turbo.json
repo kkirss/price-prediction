@@ -36,6 +36,9 @@
     "migrate-db-dev": {
       "inputs": ["prisma/schema.prisma"],
       "outputs": ["prisma/migrations/**"]
+    },
+    "reset-db-test": {
+      "cache": false
     }
   }
 }

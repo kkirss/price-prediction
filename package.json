@@ -18,7 +18,8 @@
     "infra-plan": "turbo run infra-plan",
     "infra-deploy": "turbo run infra-deploy",
     "infra-destroy": "turbo run infra-destroy",
-    "migrate-db-dev": "pnpm run --filter @price-prediction/api migrate-db-dev"
+    "migrate-db-dev": "pnpm run --filter @price-prediction/api migrate-db-dev",
+    "reset-db-test": "pnpm run --filter @price-prediction/api reset-db-test"
   },
   "devDependencies": {
     "@price-prediction/tsconfig": "workspace:*",
