@@ -6,7 +6,8 @@ const pathParamRegex = /\/(:\w+)/g
 
 export const registerUnauthorizedRoute = (path: string): void => {
   if (pathParamRegex.test(path)) {
-    const pathRegexp = new RegExp(path.replace(pathParamRegex, '/\\w+'))
+    const pathRegex = path.replace(pathParamRegex, '/\\w+')
+    const pathRegexp = new RegExp(`^${pathRegex}$`)
     unauthorizedRouteRegexps.add(pathRegexp)
   }
   unauthorizedRoutes.add(path)
