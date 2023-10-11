@@ -16,9 +16,13 @@ const getPort = (): number => {
   return port
 }
 
-checkPricesForever(5000).finally(() => {
+// await checkPricesForever(5000)
+
+checkPricesForever(5000).then(() => {
   console.error('Price checking loop exited unexpectedly')
   process.exit(1)
+}, e => {
+  console.error('Unexpected error when checking prices', e)
 })
 
 if (import.meta.env.PROD) {
