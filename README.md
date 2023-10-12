@@ -2,7 +2,7 @@
 
 Toy app to predict prices of Bitcoin.
 
-https://kkirss.github.io/price-prediction/
+Note: The deployment of the backend is broken, the app currently only works locally. See [Backend](#backend-1).
 
 ## Technology
 
