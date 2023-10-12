@@ -21,7 +21,12 @@ export const getUserLatestPricePrediction = async (userId: string, assetSlug: st
       asset: {
         slug: assetSlug
       }
-    }
+    },
+    orderBy: [
+      {
+        predictionTime: 'desc'
+      }
+    ]
   })
 
 export const getAssetActivePricePredictions = async (assetSlug: string): Promise<PricePrediction[]> =>
