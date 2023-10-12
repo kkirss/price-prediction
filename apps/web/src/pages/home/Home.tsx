@@ -5,10 +5,7 @@ import { PricePredicting } from '~/pricePrediction'
 
 const Home: Component = () =>
   <CenteredBox>
-    <PricePredicting
-      assetId='bitcoin'
-      sx={{ minWidth: '50%' }}
-    />
+    <PricePredicting assetSlug='bitcoin' />
   </CenteredBox>
 
 export default Home

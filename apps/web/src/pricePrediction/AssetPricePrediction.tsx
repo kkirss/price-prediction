@@ -1,41 +1,57 @@
-import { type Component, createSignal, Show, Suspense } from 'solid-js'
-import { type SxProps } from '@suid/system'
-import { Alert, CircularProgress, Stack } from '@suid/material'
+import { Alert, CircularProgress } from '@suid/material'
+import { Component, createEffect, Show, Suspense } from 'solid-js'
 
-import { type AssetData, useLatestPricePrediction } from '@price-prediction/api-client'
-import { PredictAssetPrice, PricePrediction } from '@price-prediction/financial-assets-ui'
+import { AssetData, useLatestPricePrediction } from '@price-prediction/api-client'
+import { PredictionStatus, PricePrediction } from '@price-prediction/financial-assets-ui'
+
+import { usePredictingStatus } from './predictingStatus'
 
 export const AssetPricePrediction: Component<{
   asset: AssetData
-  sx?: SxProps
 }> = (props) => {
-  const [showPrediction] = createSignal(false)
-  const predictionQuery = useLatestPricePrediction(() => props.asset.slug, showPrediction)
+  const [predictingState, { lockPredicting, unlockPredicting, showPrediction }] = usePredictingStatus()
+  const predictionQuery = useLatestPricePrediction(() => props.asset.slug)
+
+  createEffect(() => {
+    const predictionPending = (predictionQuery.data?.scoreChange ?? null) === null;
+    if (!predictingState.predictingLocked && predictionPending) {
+      lockPredicting()
+      showPrediction()
+    }
+    if (predictingState.predictingLocked && !predictionPending) {
+      unlockPredicting()
+    }
+  })
+
+  const predictionStatus = (): PredictionStatus => {
+    const scoreChange = predictionQuery.data?.scoreChange ?? null;
+    if (scoreChange === null) {
+      return 'pending'
+    }
+    return scoreChange > 0 ? 'correct' : 'incorrect'
+  }
+
   return (
-    <Stack gap={4}>
-      <PredictAssetPrice
-        sx={props.sx}
-        assetName={props.asset.name}
-        price={props.asset.lastPriceUsd}
-        currencySymbol='$'
-        onPredictPrice={() => {
-        }}
-      />
-      <Suspense fallback={<CircularProgress />}>
-        <Show when={predictionQuery.data}>
-          {(predictionResponse) =>
+    <Suspense fallback={<CircularProgress />}>
+      <Show when={predictionQuery.data}>
+        {(predictionResponse) =>
+          <Show when={predictingState.showPrediction}>
             <PricePrediction
               assetName={props.asset.name}
+              currentPrice={props.asset.lastPriceUsd}
               currencySymbol='$'
-              price={predictionResponse().initialPriceUsd}
-            />}
-        </Show>
-        <Show when={predictionQuery.error}>
-          <Alert severity='error'>
-            {predictionQuery.error as string}
-          </Alert>
-        </Show>
-      </Suspense>
-    </Stack>
+              predictedDirection={predictionResponse().predictionType}
+              initialPrice={predictionResponse().initialPriceUsd}
+              finalPrice={predictionResponse().finalPriceUsd}
+              predictionStatus={predictionStatus()}
+            />
+          </Show>}
+      </Show>
+      <Show when={predictionQuery.error}>
+        <Alert severity='error'>
+          {predictionQuery.error as string}
+        </Alert>
+      </Show>
+    </Suspense>
   )
 }

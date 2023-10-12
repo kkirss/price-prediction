@@ -1,5 +1,5 @@
 import { type Component, type ComponentProps } from 'solid-js'
-import { Box, Button } from '@suid/material'
+import { Button, Stack } from '@suid/material'
 import { type SxProps } from '@suid/system'
 import { ArrowUpward, ArrowDownward } from '@suid/icons-material'
 
@@ -9,13 +9,7 @@ export const UpDownButtons: Component<{
   disabled?: boolean
   sx?: SxProps
 }> = (props) => (
-  <Box sx={{
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 2,
-    ...props.sx
-  }}
-  >
+  <Stack direction='column' gap={2} sx={props.sx}>
     <Button
       sx={{ flexGrow: 1 }}
       color='success'
@@ -36,5 +30,5 @@ export const UpDownButtons: Component<{
     >
       <ArrowDownward />
     </Button>
-  </Box>
+  </Stack>
 )
